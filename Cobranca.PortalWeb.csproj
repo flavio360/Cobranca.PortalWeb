@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\img\" />
+    <Folder Include="wwwroot\assets\icon\" />
+    <Folder Include="wwwroot\assets\animation\" />
+  </ItemGroup>
+
 </Project>

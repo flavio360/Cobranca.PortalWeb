@@ -1,0 +1,153 @@
+﻿@using Cobranca.PortalWeb.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "Login.cshtml";
+}
+
+@model LoginRequestViewModel
+
+<script src="~/js/Login.js"></script>
+<script src="~/js/Spinner.js"></script>
+<link rel="stylesheet" href="/css/Re_Login.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+
+</head>
+<div class="container_global">
+
+    <div class="img1 video-pai">
+        <video autoplay="" preload="auto" muted="" loop="yes" src="/assets/animacoes/videoplayback.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="col-md-6 offset-xxl-1 order-1 order-md-2 logo_animation ">
+        <img src="/assets/icones/rencontrer_ico.png" alt="" class="img-fluid">
+    </div>
+
+    <div class="splash-screen ">
+        <div class="container_splash ">
+            <div class="myAnim">
+                <img src="/assets/img/Recontrer_Transicao.png" />
+            </div>
+        </div>
+    </div>
+
+    <form asp-route="" id="frmPost" class="login_formulario">
+        <header class="login_formulario_header">
+            <div class="login_form_header1">
+                <img src="~/assets/img/Logo_Titulo_Login.png" width="60%" alt="Gestão de pacientes" />
+                <p class="login_form_header_desc">Tecnologia que cuida <b>gestão que transforma.</b></p>
+            </div>
+            <div class="tt_login">
+                <h2>Log In</h2>
+            </div>
+        </header>
+
+        <main>
+            <div class="container_inputs">
+                <div class="container_fotos_input">
+                    <img src="../../../assets/icones/email.png" alt="Email" style="width:12px;" />
+                </div>
+
+                <div>
+                    <strong>Seu usuário</strong>
+                    <input class="inputs_login" id="username" placeholder="Digite seu usuário" asp-for="username" autofocus required autocomplete="off" style="border:0px">
+                </div>
+
+            </div>
+            <div class="container_inputs">
+                <div class="container_fotos_input">
+                    <img src="../../../assets/icones/cadeado.png" alt="Cadeado" style="width:12px;" />
+                </div>
+
+                <div class="container_senha">
+                    <strong>Sua senha</strong>
+                    <input type="password" id="password" class="inputs_login input_senha" placeholder="Digite sua senha" asp-for="password" autocomplete="off" style="border: none;">
+
+                    <div class="input-image-olho">
+                        <button class="button_input_olho" type="button">
+                            <img class="eyesClosed " onclick="alterarInput('closed')" src="../../../assets/icones/olhofechado.png" alt="Olhos" style="width:12px;" />
+                            <img class="eyesOpen ocultar" onclick="alterarInput('open')" src="../../../assets/icones/olhoaberto.png" alt="Olhos" style="width:12px;" />
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div style="display: flex; gap: 2rem;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked" style="font-size: 0.686rem; color:#515251; font-weight: 600 ">
+                        Manter Logado
+                    </label>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            @*<button class="btn_login_entrar" name="btnLogin" id="btnLogin" value="login">Entrar</button>*@
+            <button class="btn_login_entrar" name="btnLogin" id="btnLogin" value="login" type="button" onclick="Spinner()">Entrar</button>
+        </footer>
+    </form>
+
+    <div class="LP_L_container_footer_login">
+        @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger fade show" role="alert" style="text-align:center;font-size:9px;">
+                @Html.ValidationMessage("login fail", null, new { @class = "font-tamanho-tt font-cor-alerta" })
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var splashScreen = document.querySelector('.splash-screen');
+
+    window.onload = function () {
+        setInterval(() => {
+            splashScreen.style.display = 'none';
+        }, 3000);
+
+    }
+
+    /////LÓGICA PARA VER OU NÃO VER A SENHA
+    var eyesClosed = document.querySelector('.eyesClosed');
+    var eyesOpen = document.querySelector('.eyesOpen');
+    var input_senha = document.querySelector('.input_senha');
+
+    function alterarInput(value) {
+        if (value == 'closed') {
+            input_senha.type = 'text';
+            eyesOpen.classList.remove('ocultar');
+            eyesClosed.classList.add('ocultar');
+
+        } else {
+            input_senha.type = 'password';
+
+            eyesOpen.classList.add('ocultar');
+            eyesClosed.classList.remove('ocultar');
+        }
+    }
+</script>
+
+<div id="spinner" style="display: none;">
+    <img src="/assets/animacoes/ampulheta.gif" alt="Carregando...">
+</div>
+
+<script>
+    function Spinner() {
+        // Exibe o spinner
+        document.getElementById('spinner').style.display = 'block';
+
+        // Aqui você pode adicionar a lógica para o login ou outra ação
+        // Exemplo: simular um atraso de 2 segundos antes de ocultar o spinner
+        setTimeout(function () {
+            document.getElementById('spinner').style.display = 'none';
+            // Aqui você pode redirecionar ou realizar outra ação após o login
+        });
+    }
+</script>

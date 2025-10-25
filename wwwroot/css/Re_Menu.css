@@ -1,0 +1,14 @@
+﻿.Re_Menu_Home {
+}
+
+
+a.Re_Menu_Home:hover {
+    color: black;
+}
+
+.Re_Menu_Home:hover {
+    transition: 0.2s linear;
+    transform: scale(1.50,1.50);
+    animation: animarbox;
+    background-color:cornsilk;
+}

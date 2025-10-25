@@ -2,6 +2,12 @@
 {
     public class LoginRequestModel
     {
+        public string Senha { get; set; }
+        public string Email { get; set; }
+    }
+
+    public class LoginResponseModel
+    {
         public int IdUsuario { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }

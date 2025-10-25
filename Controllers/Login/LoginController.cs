@@ -1,6 +1,7 @@
 ﻿using Cobranca.PortalWeb.Models.Login;
 using Cobranca.PortalWeb.Service.Interface;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -22,7 +23,8 @@ namespace Cobranca.PortalWeb.Controllers.Login
         }
         public IActionResult Index()
         {
-            return View();
+            LoginRequestViewModel login = new LoginRequestViewModel();
+            return View(login);
         }
 
 
@@ -35,45 +37,56 @@ namespace Cobranca.PortalWeb.Controllers.Login
             {
                 var autenticade = await _Service.LoginAutenticacao(loginData);
 
-                if (autenticade != null)
+                if (autenticade != null && autenticade.UsuarioId > 0)
                 {
                     var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.NameIdentifier, autenticade.IdUsuario.ToString()),
-                        new Claim(ClaimTypes.Name, autenticade.Nome),
-                        new Claim("Token", autenticade.Email),
-                        new Claim("TipoAcesso", autenticade.IdPerfilUsuario.ToString()),
-                        new Claim("EmpresaId", autenticade.EmpresaId.ToString())
-                    };
+            {
+                new Claim(ClaimTypes.NameIdentifier, autenticade.UsuarioId.ToString()),
+                new Claim(ClaimTypes.Name, autenticade.Nome ?? string.Empty),
+                new Claim(ClaimTypes.Email, loginData.Email ?? string.Empty),   // use o tipo certo p/ e-mail
+                new Claim("TipoAcesso", autenticade.PerfilId.ToString())
+            };
 
-                    // Criando a identidade e o principal
-                    var identity = new ClaimsIdentity(claims, "CookieAuthentication");
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);
 
-                    // Salvando o cookie de autenticação
-                    await HttpContext.SignInAsync("CookieAuthentication", principal, new AuthenticationProperties
-                    {
-                        IsPersistent = true, // Se o usuário quer manter a sessão ativa
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(30) // Duração do cookie
-                    });
+                    // Salva o cookie
+                    // antes (ERRADO p/ sua config):
+                    // await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, ...);
+
+                    // depois (CERTO p/ sua config):
+                    await HttpContext.SignInAsync(
+                        "CookieAuthentication",
+                        principal,
+                        new AuthenticationProperties
+                        {
+                            IsPersistent = true,
+                            ExpiresUtc = DateTime.UtcNow.AddMinutes(30),
+                            AllowRefresh = true
+                        });
 
 
+                    // ⚠️ Não use HttpContext.User aqui (ainda é o "antigo").
+                    // Monte a chave de cache com dados que você já tem:
+                    var cacheKey = $"Login_{autenticade.UsuarioId}";
+                    _memoryCache.Set(cacheKey, autenticade,
+                        new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(cacheTime)));
 
-                    var cacheKey = "Login_" + (HttpContext.User.Identity.Name?.Replace(" ", "_") ?? "");
+                    // Gere a rota de forma robusta
+                    var url = Url.Action("Index", "Home");   // => "/Home/Index"
 
-                    _memoryCache.Set(cacheKey, autenticade, new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(cacheTime)));
-
-
-                    return Json(new { status = "success", msg = "", urlRedirect = "Home" });
+                    return Json(new { status = "success", msg = "", urlRedirect = url });
                 }
                 else
                 {
-                    return Json(new { status = "fail", msg = "Usuário ou senha incorretos", urlRedirect = "Index" });
+                    var url = Url.Action("Index", "Login");
+                    return Json(new { status = "fail", msg = "Usuário ou senha incorretos", urlRedirect = url });
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { status = "error", msg = $"Erro ao autenticar: {ex.Message}", urlRedirect = "Index" });
+                var url = Url.Action("Index", "Login");
+                return Json(new { status = "error", msg = $"Erro ao autenticar: {ex.Message}", urlRedirect = url });
             }
         }
     }

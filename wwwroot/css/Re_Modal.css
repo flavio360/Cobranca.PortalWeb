@@ -1,0 +1,36 @@
+﻿body {
+    background-color: #F8F9FA;
+    font-family: Arial, sans-serif;
+}
+
+.container-box {
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.btn-secondary {
+    background-color: #81C784;
+    border: none;
+    color: white;
+}
+
+    .btn-secondary:hover {
+        background-color: #66A773;
+    }
+
+.icon {
+    color: #007BFF;
+    margin-right: 8px;
+}

@@ -22,8 +22,7 @@ builder.Services.AddAuthentication("CookieAuthentication")
     });
 
 // HttpClient para LoginService (antes do Build)
-builder.Services.AddHttpClient<ILoginService, LoginService>(c =>
-{
+builder.Services.AddHttpClient<ILoginService, LoginService>(c =>{
     if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))
         c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);
 });
@@ -55,5 +54,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");
+
+
 
 app.Run();

@@ -1,7 +1,11 @@
+using Cobranca.PortalWeb.Mappings;
 using Cobranca.PortalWeb.Service;
 using Cobranca.PortalWeb.Service.Interface;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
+using AutoMapper;
+using Cobranca.PortalWeb.Service.Cobranca;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,13 +25,21 @@ builder.Services.AddAuthentication("CookieAuthentication")
         options.SlidingExpiration = true;
     });
 
-// HttpClient para LoginService (antes do Build)
-builder.Services.AddHttpClient<ILoginService, LoginService>(c =>{
-    if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))
-        c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);
+#region HttpClient
+
+builder.Services.AddHttpClient<ILoginService, LoginService>(c =>{if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);});
+builder.Services.AddHttpClient<ICobrancaService, CobrancaService>(c =>{if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);});
+#endregion
+
+#region Mapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<CobrancaProfile>(); // sua Profile precisa herdar de Profile
 });
 
 var app = builder.Build();
+#endregion
+
 
 // Pipeline
 if (!app.Environment.IsDevelopment())

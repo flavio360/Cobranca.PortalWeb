@@ -10,5 +10,6 @@
         public DateTime? DataFim{ get; set; }
         public int? Page { get; set; }
         public int? Limit { get; set; }
+        public int? TipoConsulta { get; set; } = 0;
     }
 }

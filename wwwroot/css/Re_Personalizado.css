@@ -1,0 +1,1471 @@
+﻿/*//////////////HOME////////////*/
+
+.RE_Home_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.RE_Home_container_2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.RE_Home_Body {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 1rem 0 1rem;
+}
+
+.RE_Home_container_Full {
+    overflow: hidden;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.RE_HOME_indicadores {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.RE_List_Corpo {
+    /* width: 100%; */
+    /* padding: 40px 20px 20px 20px; */
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    /* margin: 0 1rem; */
+    /* height: 30.5rem;
+    overflow: auto; */
+}
+
+.RE_table {
+    /* margin: 1rem; */
+}
+
+.RE_table_footer_th {
+    margin: 1rem;
+}
+
+.RE_Table_Th {
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+    unicode-bidi: isolate;
+    /* padding: -30px 15px 5px 5px; */
+    color: #a6a6a6;
+    border-bottom: 0.001rem solid #efefef;
+}
+
+.RE_Table_Td {
+    font-family: Montserrat;
+    font-size: 10px;
+    /* padding: 10px 0 2px 0; */
+    padding: 0.2rem 0;
+    align-content: center;
+    text-align: left;
+    border-bottom: 0.001rem solid #e3e4e8;
+}
+
+.RE_Table_foot {
+    padding: 20px 10px 5px 10px;
+    text-align: left;
+    font-size: 11px;
+    color: #000;
+    border-bottom: 1px solid #e3e4e8;
+}
+
+.font-cor-cinza {
+    color: #a6a6a6;
+}
+
+
+.font-tamanho-sm {
+    font-size: 10px;
+}
+
+.RE_Table_Button {
+    text-decoration: none;
+    text-align: left !important;
+    padding: 0px 0px 0px 0px;
+    background-color: transparent;
+    border: none;
+    color: #0a2c5b;
+    cursor: pointer;
+}
+
+    .RE_Table_Button:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #136cfb;
+    }
+
+    .RE_Table_Button:focus {
+        font-size: 10.7px;
+        color: gray;
+        transition: 0.2s;
+        outline: none;
+    }
+
+funcao::-webkit-scrollbar {
+    width: 5px;
+    height: 5px
+}
+
+.funcao::-webkit-scrollbar-track {
+    background: gray
+}
+
+.funcao::-webkit-scrollbar-thumb {
+    background: #53535C
+}
+
+.funcao {
+    background-color: #fff;
+    margin-top: .5rem;
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: .5rem;
+    border-start-start-radius: 8px;
+    border-start-end-radius: 8px;
+}
+
+    .funcao select {
+        border: none;
+        width: 15%;
+        height: 1.8rem;
+        border-style: solid;
+        border-color: gray;
+        border-width: 1px;
+        border-radius: 6px;
+        opacity: .4;
+        /*margin-top: .5rem;*/
+        outline: 0;
+        font-size: .75rem
+    }
+
+
+    .funcao hr {
+        color: gray;
+        opacity: .3;
+        height: 2.3rem;
+        margin: .5rem 1rem 0rem
+    }
+
+    /*.funcao p {*/
+    /*    margin-top: 1.2rem;*/
+    /*    margin-left: -.5rem*/
+    /*}*/
+
+
+    .funcao .gestao {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center
+    }
+
+    .funcao .gestao,
+    .funcao .gestao {
+        margin-top: .5rem
+    }
+
+
+
+    .funcao .pesquisar_filtro {
+        border-style: solid;
+        height: 2rem;
+        border-color: gray;
+        opacity: .4;
+        border-width: 1px;
+        margin-left: 1.5rem;
+        margin-top: .5rem;
+        width: 15%;
+        display: flex;
+        border-radius: 6px
+    }
+
+        .funcao .pesquisar_filtro input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            height: 100%;
+            font-size: .65rem;
+            padding: .15rem .5rem
+        }
+
+            .funcao .pesquisar_filtro input:focus {
+                outline: none
+            }
+
+        .funcao .pesquisar_filtro input {
+            width: 12.5rem;
+            height: 100%;
+            font-size: .65rem;
+            padding: .15rem .5rem
+        }
+
+        .funcao .pesquisar_filtro img {
+            margin-right: .5rem;
+            width: 1rem
+        }
+
+    .funcao .filtro_radio1 {
+        display: flex;
+        width: 15%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column
+    }
+
+        .funcao .filtro_radio1 .container_filtros_az {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: .5rem
+        }
+
+            .funcao .filtro_radio1 .container_filtros_az .filtro_az {
+                display: flex;
+                gap: .25rem
+            }
+
+
+        .funcao .filtro_radio1 header {
+            width: 12rem
+        }
+
+        .funcao .filtro_radio1 .filtro_ordenar_container,
+        .funcao .filtro_radio1 .filtro_ordenar_container .filtro_ordernar {
+            width: 100% !important
+        }
+
+
+    .funcao .filtro_radio2 {
+        display: flex;
+        width: 15%;
+        flex-direction: column;
+        align-items: center
+    }
+
+        .funcao .filtro_radio2 .filtro_ordenar_container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center
+        }
+
+            .funcao .filtro_radio2 .filtro_ordenar_container .filtro_ordernar {
+                display: flex;
+                gap: .5rem;
+                margin-top: .5rem
+            }
+
+.RE_indicadores {
+    box-shadow: -4px 4px 9px 0px rgba(0, 0, 0, 0.08);
+    width: 14rem;
+    background-color: white;
+    height: 4.8rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.RE_indicadores_LinkBox {
+    text-decoration: none;
+    cursor: default
+}
+
+.RE_indicadores_titulo {
+    background-color: #2a548c;
+    border-start-end-radius: 10px;
+    border-start-start-radius: 10px;
+    color: white;
+    cursor: default;
+    font-weight: 600;
+    font-size: 0.599rem;
+    white-space: nowrap;
+}
+
+.RE_indicadores_conteudo {
+    color: black;
+    margin-top: 0.95rem;
+    font-weight: 600;
+    font-size: 1.20rem;
+    white-space: nowrap
+}
+
+.RE_Home_MENU {
+    display: flex;
+    gap: 1rem;
+    /*justify-content: center;*/
+    justify-content: space-between;
+}
+
+.RE_Home_MENU_2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.RE_Home_MENU_Full {
+    display: flex;
+    gap: 1rem;
+    width: 140%;
+    overflow-x: hidden;
+}
+
+
+.RE_Home_Menu_esquerdo {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+    height: fit-content;
+    width: fit-content;
+}
+
+.RE_Home_Menu_esquerdo_2 {
+    width: 60%;
+    border-radius: 12px;
+    padding: 1%;
+}
+
+
+.RE_Home_LinkBox {
+    text-decoration: none !important;
+    color: black;
+    z-index: 0;
+}
+
+.RE_Home_MenuContainer {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.RE_Home_Card {
+    background-color: white;
+    width: 14rem;
+    border-radius: 8px;
+    padding: 1rem;
+    color: black;
+}
+
+a.RE_Home_Card:hover {
+    color: black;
+}
+
+.RE_Home_Card:hover {
+    transition: 0.2s linear;
+    transform: scale(1.05, 1.05);
+    animation: animarbox;
+}
+
+.RE_Home_titulo {
+    font-size: 0.695rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(4, 18, 36);
+}
+
+.RE_Home_conteudo {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+    .RE_Home_conteudo img {
+        max-width: 75px;
+        max-height: 65px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+.RE_Home_LinkFooter {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.RE_Home_LinkFooter_2 {
+    display: flex;
+    margin-top: 40px;
+    position: relative;
+    left: 3px;
+    top: 12px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.RE_Menu_Pesquisa {
+    background-color: #e5e5e5 !important;
+    width: 14rem !important;
+    padding: 0;
+}
+
+.RE_Menu_PesquisaInput {
+    font-size: 0.766rem;
+    height: 2.5rem !important;
+    border-radius: 6px;
+    width: 13rem !important
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.RE_Menu_PesquisaImg {
+    width: 1rem;
+    height: 1rem;
+    margin-left: -2.1rem;
+}
+
+.RE_Menu_Button {
+    background-color: #ffffff !important;
+    height: 2rem;
+    color: #212529;
+    outline: 1px solid #e9ecef;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+    .RE_Menu_Button:hover {
+        outline: 1px solid #6c757d;
+        ;
+    }
+
+.RE_Menu_ButtonVoltarIMG {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.RE_Menu_ButtonFiltro {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.RE_Menu_ButtonFiltroIMG {
+    width: 1.5rem;
+    margin-left: -0.30rem;
+}
+
+.RE_Menu_ButtonFiltro_B {
+    height: 1.7rem;
+    width: 1.8rem;
+}
+
+.RE_Menu_ButtonFiltroIMG_B {
+    width: 1.6rem;
+    /*    margin-left: -0.50rem;
+    margin-top: -0.55rem;*/
+    align-content: center;
+}
+
+.RE_home-container-content-direita {
+    width: 29rem;
+    border-radius: 12px;
+    /*padding: 1%;*/
+    /*margin-left: -20.75%;*/
+    /*height: 90% !important;*/
+}
+
+.home-container-content-direita {
+    width: 40%;
+    border-radius: 12px;
+    padding: 1%;
+}
+
+.RE_home-container-esquerda-slide {
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.RE_home-carousel {
+    height: 23.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.RE_home-carousel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.RE_home-carousel-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.RE_home-content-pages {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.RE_home-content-fbarraprogresso {
+    background-color: #ccc;
+    border-radius: 6px;
+}
+
+.RE_home-content-barraprogresso {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+
+
+.home-content-ocorrencias {
+    height: 385px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12px;
+    background-image: url("../assets/icones/backgroundOcorrencias.png");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+}
+
+
+.RE_header_input_pesquisa {
+    background-color: var(--white);
+    margin-left: 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+}
+
+@media screen and (max-width: 768px) {
+    .RE_header_input_pesquisa {
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-left: 0rem !important;
+    }
+}
+
+.RE_header_input_pesquisa input {
+    margin: 0rem 0.4rem;
+    width: 85%;
+    border: none;
+    background-color: transparent;
+    padding: 0.2rem 0.4rem;
+    color: var(--gray-text);
+    font-weight: 600;
+    font-size: 0.65rem;
+}
+
+    .RE_header_input_pesquisa input:focus {
+        outline: none;
+        border-radius: 3px;
+        border: 0.15rem solid var(--azul-secundary);
+    }
+
+@media screen and (max-width: 768px) {
+    .RE_header_input_pesquisa input {
+        padding: 0.35rem 0.4rem;
+        font-size: 0.6rem !important;
+    }
+}
+
+.RE_header_input_pesquisa img {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+    .RE_header_input_pesquisa img:hover {
+        opacity: 0.7;
+    }
+
+
+
+
+/* Destacar linha ao passar o mouse */
+.RE_Table_Tr {
+}
+
+    .RE_Table_Tr:hover {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        color: #000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+
+
+/* 1) Wrapper que HABILITA scroll horizontal quando a tabela exceder a largura */
+.re-scroll-x {
+    width: 100%;
+    overflow-x: auto; /* mostra a barra horizontal quando precisar */
+    -webkit-overflow-scrolling: touch; /* rolagem suave em mobile */
+}
+
+/* 2) Tabela que PODE se expandir além do wrapper (sem alterar as suas atuais) */
+.re-table-wide {
+    border-collapse: collapse;
+    table-layout: auto; /* colunas pelo conteúdo */
+    width: max-content; /* tabela cresce conforme o conteúdo */
+    min-width: 100%; /* mas nunca menor que o wrapper */
+}
+
+/* 3) Células SEM quebra de linha (faz a largura somar e gerar scroll-x) */
+.re-nowrap th,
+.re-nowrap td {
+    white-space: nowrap;
+}
+
+/* 4) (Opcional) Células COM quebra automática (se quiser voltar a quebrar) */
+.re-wrap th,
+.re-wrap td {
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* 5) (Opcional) Aparar visualmente textos muito longos em células específicas */
+.re-truncate {
+    max-width: 220px; /* ajuste se quiser */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Wrapper que mostra a barra horizontal quando a tabela passar da largura */
+.re-scroll-x {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Garante comportamento de TABELA (anula display:flex/block antigos quando dentro de _lp_table_list) */
+._re_table_list .re-table-wide {
+    border-collapse: collapse;
+    table-layout: auto !important; /* colunas pelo conteúdo */
+    width: max-content !important; /* pode ficar mais larga que o wrapper */
+    min-width: 100% !important;
+    display: table !important;
+}
+
+    ._re_table_list .re-table-wide thead {
+        display: table-header-group !important;
+    }
+
+    ._re_table_list .re-table-wide tbody {
+        display: table-row-group !important;
+        overflow: visible !important; /* não bloqueia a largura */
+    }
+
+    ._re_table_list .re-table-wide tr {
+        display: table-row !important;
+    }
+
+/* Sem quebra de linha nas células: soma de larguras => scroll-x */
+.re-nowrap th,
+.re-nowrap td {
+    white-space: nowrap;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+}
+
+
+
+
+.RE_Home_MenuContainer_Low {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.home-container-content-barraprogresso {
+    padding: 0px 10px 5px 10px;
+}
+
+.home-content-fbarraprogresso {
+    background-color: #ccc;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.home-content-barraprogresso {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.home-container-content-barraprogresso {
+    padding: 0px 10px 5px 10px;
+}
+
+.RE_Home_MenuContainer_Top {
+    display: flex;
+    gap: 1rem
+}
+
+
+
+/*//////////////HOME////////////*/
+
+.RE_Home_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.RE_Home_container_2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.RE_Home_Body {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 1rem 0 1rem;
+}
+
+.RE_Home_container_Full {
+    overflow: hidden;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.RE_HOME_indicadores {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.RE_List_Corpo {
+    /* width: 100%; */
+    /* padding: 40px 20px 20px 20px; */
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    /* margin: 0 1rem; */
+    /* height: 30.5rem;
+    overflow: auto; */
+}
+
+.RE_table {
+    /* margin: 1rem; */
+}
+
+.RE_table_footer_th {
+    margin: 1rem;
+}
+
+.RE_Table_Th {
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+    unicode-bidi: isolate;
+    /* padding: -30px 15px 5px 5px; */
+    color: #a6a6a6;
+    border-bottom: 0.001rem solid #efefef;
+}
+
+.RE_Table_Td {
+    font-family: Montserrat;
+    font-size: 10px;
+    /* padding: 10px 0 2px 0; */
+    padding: 0.2rem 0;
+    align-content: center;
+    text-align: left;
+    border-bottom: 0.001rem solid #e3e4e8;
+}
+
+.RE_Table_foot {
+    padding: 20px 10px 5px 10px;
+    text-align: left;
+    font-size: 11px;
+    color: #000;
+    border-bottom: 1px solid #e3e4e8;
+}
+
+.font-cor-cinza {
+    color: #a6a6a6;
+}
+
+
+.font-tamanho-sm {
+    font-size: 10px;
+}
+
+.RE_Table_Button {
+    text-decoration: none;
+    text-align: left !important;
+    padding: 0px 0px 0px 0px;
+    background-color: transparent;
+    border: none;
+    color: #0a2c5b;
+    cursor: pointer;
+}
+
+    .RE_Table_Button:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #136cfb;
+    }
+
+    .RE_Table_Button:focus {
+        font-size: 10.7px;
+        color: gray;
+        transition: 0.2s;
+        outline: none;
+    }
+
+funcao::-webkit-scrollbar {
+    width: 5px;
+    height: 5px
+}
+
+.funcao::-webkit-scrollbar-track {
+    background: gray
+}
+
+.funcao::-webkit-scrollbar-thumb {
+    background: #53535C
+}
+
+.funcao {
+    background-color: #fff;
+    margin-top: .5rem;
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: .5rem;
+    border-start-start-radius: 8px;
+    border-start-end-radius: 8px;
+}
+
+    .funcao select {
+        border: none;
+        width: 15%;
+        height: 1.8rem;
+        border-style: solid;
+        border-color: gray;
+        border-width: 1px;
+        border-radius: 6px;
+        opacity: .4;
+        /*margin-top: .5rem;*/
+        outline: 0;
+        font-size: .75rem
+    }
+
+
+    .funcao hr {
+        color: gray;
+        opacity: .3;
+        height: 2.3rem;
+        margin: .5rem 1rem 0rem
+    }
+
+    /*.funcao p {*/
+    /*    margin-top: 1.2rem;*/
+    /*    margin-left: -.5rem*/
+    /*}*/
+
+
+    .funcao .gestao {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center
+    }
+
+    .funcao .gestao,
+    .funcao .gestao {
+        margin-top: .5rem
+    }
+
+
+
+    .funcao .pesquisar_filtro {
+        border-style: solid;
+        height: 2rem;
+        border-color: gray;
+        opacity: .4;
+        border-width: 1px;
+        margin-left: 1.5rem;
+        margin-top: .5rem;
+        width: 15%;
+        display: flex;
+        border-radius: 6px
+    }
+
+        .funcao .pesquisar_filtro input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            height: 100%;
+            font-size: .65rem;
+            padding: .15rem .5rem
+        }
+
+            .funcao .pesquisar_filtro input:focus {
+                outline: none
+            }
+
+        .funcao .pesquisar_filtro input {
+            width: 12.5rem;
+            height: 100%;
+            font-size: .65rem;
+            padding: .15rem .5rem
+        }
+
+        .funcao .pesquisar_filtro img {
+            margin-right: .5rem;
+            width: 1rem
+        }
+
+    .funcao .filtro_radio1 {
+        display: flex;
+        width: 15%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column
+    }
+
+        .funcao .filtro_radio1 .container_filtros_az {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: .5rem
+        }
+
+            .funcao .filtro_radio1 .container_filtros_az .filtro_az {
+                display: flex;
+                gap: .25rem
+            }
+
+
+        .funcao .filtro_radio1 header {
+            width: 12rem
+        }
+
+        .funcao .filtro_radio1 .filtro_ordenar_container,
+        .funcao .filtro_radio1 .filtro_ordenar_container .filtro_ordernar {
+            width: 100% !important
+        }
+
+
+    .funcao .filtro_radio2 {
+        display: flex;
+        width: 15%;
+        flex-direction: column;
+        align-items: center
+    }
+
+        .funcao .filtro_radio2 .filtro_ordenar_container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center
+        }
+
+            .funcao .filtro_radio2 .filtro_ordenar_container .filtro_ordernar {
+                display: flex;
+                gap: .5rem;
+                margin-top: .5rem
+            }
+
+.RE_indicadores {
+    box-shadow: -4px 4px 9px 0px rgba(0, 0, 0, 0.08);
+    width: 14rem;
+    background-color: white;
+    height: 4.8rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.RE_indicadores_LinkBox {
+    text-decoration: none;
+    cursor: default
+}
+
+.RE_indicadores_titulo {
+    background-color: #2a548c;
+    border-start-end-radius: 10px;
+    border-start-start-radius: 10px;
+    color: white;
+    cursor: default;
+    font-weight: 600;
+    font-size: 0.599rem;
+    white-space: nowrap;
+}
+
+.RE_indicadores_conteudo {
+    color: black;
+    margin-top: 0.95rem;
+    font-weight: 600;
+    font-size: 1.20rem;
+    white-space: nowrap
+}
+
+.RE_Home_MENU {
+    display: flex;
+    gap: 1rem;
+    /*justify-content: center;*/
+    justify-content: space-between;
+}
+
+.RE_Home_MENU_2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.RE_Home_MENU_Full {
+    display: flex;
+    gap: 1rem;
+    width: 140%;
+    overflow-x: hidden;
+}
+
+
+.RE_Home_Menu_esquerdo {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+    height: fit-content;
+    width: fit-content;
+}
+
+.RE_Home_Menu_esquerdo_2 {
+    width: 60%;
+    border-radius: 12px;
+    padding: 1%;
+}
+
+
+.RE_Home_LinkBox {
+    text-decoration: none !important;
+    color: black;
+    z-index: 0;
+}
+
+.RE_Home_MenuContainer {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.RE_Home_Card {
+    background-color: white;
+    width: 14rem;
+    border-radius: 8px;
+    padding: 1rem;
+    color: black;
+}
+
+a.RE_Home_Card:hover {
+    color: black;
+}
+
+.RE_Home_Card:hover {
+    transition: 0.2s linear;
+    transform: scale(1.05, 1.05);
+    animation: animarbox;
+}
+
+.RE_Home_titulo {
+    font-size: 0.695rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(4, 18, 36);
+}
+
+.RE_Home_conteudo {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+    .RE_Home_conteudo img {
+        max-width: 75px;
+        max-height: 65px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+.RE_Home_LinkFooter {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.RE_Home_LinkFooter_2 {
+    display: flex;
+    margin-top: 40px;
+    position: relative;
+    left: 3px;
+    top: 12px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.RE_Menu_Pesquisa {
+    background-color: #e5e5e5 !important;
+    width: 14rem !important;
+    padding: 0;
+}
+
+.RE_Menu_PesquisaInput {
+    font-size: 0.766rem;
+    height: 2.5rem !important;
+    border-radius: 6px;
+    width: 13rem !important
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.RE_Menu_PesquisaImg {
+    width: 1rem;
+    height: 1rem;
+    margin-left: -2.1rem;
+}
+
+.RE_Menu_Button {
+    background-color: #ffffff !important;
+    height: 2rem;
+    color: #212529;
+    outline: 1px solid #e9ecef;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+    .RE_Menu_Button:hover {
+        outline: 1px solid #6c757d;
+        ;
+    }
+
+.RE_Menu_ButtonVoltarIMG {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.RE_Menu_ButtonFiltro {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.RE_Menu_ButtonFiltroIMG {
+    width: 1.5rem;
+    margin-left: -0.30rem;
+}
+
+.RE_Menu_ButtonFiltro_B {
+    height: 1.7rem;
+    width: 1.8rem;
+}
+
+.RE_Menu_ButtonFiltroIMG_B {
+    width: 1.6rem;
+    /*    margin-left: -0.50rem;
+    margin-top: -0.55rem;*/
+    align-content: center;
+}
+
+.RE_home-container-content-direita {
+    width: 29rem;
+    border-radius: 12px;
+    /*padding: 1%;*/
+    /*margin-left: -20.75%;*/
+    /*height: 90% !important;*/
+}
+
+.home-container-content-direita {
+    width: 40%;
+    border-radius: 12px;
+    padding: 1%;
+}
+
+.RE_home-container-esquerda-slide {
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.RE_home-carousel {
+    height: 23.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.RE_home-carousel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.RE_home-carousel-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.RE_home-content-pages {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.RE_home-content-fbarraprogresso {
+    background-color: #ccc;
+    border-radius: 6px;
+}
+
+.RE_home-content-barraprogresso {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+
+
+.home-content-ocorrencias {
+    height: 385px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12px;
+    background-image: url("../assets/icones/backgroundOcorrencias.png");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+}
+
+
+.RE_header_input_pesquisa {
+    background-color: var(--white);
+    margin-left: 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+}
+
+@media screen and (max-width: 768px) {
+    .RE_header_input_pesquisa {
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-left: 0rem !important;
+    }
+}
+
+.RE_header_input_pesquisa input {
+    margin: 0rem 0.4rem;
+    width: 85%;
+    border: none;
+    background-color: transparent;
+    padding: 0.2rem 0.4rem;
+    color: var(--gray-text);
+    font-weight: 600;
+    font-size: 0.65rem;
+}
+
+    .RE_header_input_pesquisa input:focus {
+        outline: none;
+        border-radius: 3px;
+        border: 0.15rem solid var(--azul-secundary);
+    }
+
+@media screen and (max-width: 768px) {
+    .RE_header_input_pesquisa input {
+        padding: 0.35rem 0.4rem;
+        font-size: 0.6rem !important;
+    }
+}
+
+.RE_header_input_pesquisa img {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+    .RE_header_input_pesquisa img:hover {
+        opacity: 0.7;
+    }
+
+
+
+
+/* Destacar linha ao passar o mouse */
+.RE_Table_Tr {
+}
+
+    .RE_Table_Tr:hover {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        color: #000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+
+
+/* 1) Wrapper que HABILITA scroll horizontal quando a tabela exceder a largura */
+.re-scroll-x {
+    width: 100%;
+    overflow-x: auto; /* mostra a barra horizontal quando precisar */
+    -webkit-overflow-scrolling: touch; /* rolagem suave em mobile */
+}
+
+/* 2) Tabela que PODE se expandir além do wrapper (sem alterar as suas atuais) */
+.re-table-wide {
+    border-collapse: collapse;
+    table-layout: auto; /* colunas pelo conteúdo */
+    width: max-content; /* tabela cresce conforme o conteúdo */
+    min-width: 100%; /* mas nunca menor que o wrapper */
+}
+
+/* 3) Células SEM quebra de linha (faz a largura somar e gerar scroll-x) */
+.re-nowrap th,
+.re-nowrap td {
+    white-space: nowrap;
+}
+
+/* 4) (Opcional) Células COM quebra automática (se quiser voltar a quebrar) */
+.re-wrap th,
+.re-wrap td {
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* 5) (Opcional) Aparar visualmente textos muito longos em células específicas */
+.re-truncate {
+    max-width: 220px; /* ajuste se quiser */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Wrapper que mostra a barra horizontal quando a tabela passar da largura */
+.re-scroll-x {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Garante comportamento de TABELA (anula display:flex/block antigos quando dentro de _RE_table_list) */
+._RE_table_list .re-table-wide {
+    border-collapse: collapse;
+    table-layout: auto !important; /* colunas pelo conteúdo */
+    width: max-content !important; /* pode ficar mais larga que o wrapper */
+    min-width: 100% !important;
+    display: table !important;
+}
+
+    ._RE_table_list .re-table-wide thead {
+        display: table-header-group !important;
+    }
+
+    ._RE_table_list .re-table-wide tbody {
+        display: table-row-group !important;
+        overflow: visible !important; /* não bloqueia a largura */
+    }
+
+    ._RE_table_list .re-table-wide tr {
+        display: table-row !important;
+    }
+
+/* Sem quebra de linha nas células: soma de larguras => scroll-x */
+.re-nowrap th,
+.re-nowrap td {
+    white-space: nowrap;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+}
+
+
+
+
+.RE_Home_MenuContainer_Low {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.home-container-content-barraprogresso {
+    padding: 0px 10px 5px 10px;
+}
+
+.home-content-fbarraprogresso {
+    background-color: #ccc;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.home-content-barraprogresso {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.home-container-content-barraprogresso {
+    padding: 0px 10px 5px 10px;
+}
+
+.RE_Home_MenuContainer_Top {
+    display: flex;
+    gap: 1rem
+}
+
+.corpo-content-div {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+}
+
+._re_table_list {
+    width: 100%; /* tabela ocupa toda a largura do container */
+    table-layout: auto; /* colunas se ajustam ao conteúdo */
+    border-collapse: collapse;
+}
+
+
+.RE_Table_Th {
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+    unicode-bidi: isolate;
+    /* padding: -30px 15px 5px 5px; */
+    color: #a6a6a6;
+    border-bottom: 0.001rem solid #efefef;
+}
+
+.RE_Table_Td {
+    font-family: Montserrat;
+    font-size: 10px;
+    /* padding: 10px 0 2px 0; */
+    padding: 0.2rem 0;
+    align-content: center;
+    text-align: left;
+    border-bottom: 0.001rem solid #e3e4e8;
+}

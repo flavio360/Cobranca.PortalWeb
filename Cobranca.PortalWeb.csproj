@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -18,12 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModel\" />
-    <Folder Include="Models\Response\" />
     <Folder Include="wwwroot\assets\img\" />
     <Folder Include="wwwroot\assets\icon\" />
     <Folder Include="wwwroot\assets\animation\" />
     <Folder Include="wwwroot\assets\icones\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.1.0" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

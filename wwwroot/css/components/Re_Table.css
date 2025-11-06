@@ -1,0 +1,17 @@
+﻿._re_table_list {
+    width: 100%; /* tabela ocupa toda a largura do container */
+    table-layout: auto; /* colunas se ajustam ao conteúdo */
+    border-collapse: collapse;
+}
+
+
+.RE_Table_Th {
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+    unicode-bidi: isolate;
+    /* padding: -30px 15px 5px 5px; */
+    color: #a6a6a6;
+    border-bottom: 0.001rem solid #efefef;
+}

@@ -74,7 +74,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../assets/animacoes/videoplayback.mp4');
+    /*background-image: url('../assets/animacoes/videoplayback.mp4');*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -374,7 +374,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../assets/animacoes/videoplayback.mp4');
+    /*background-image: url('../assets/animacoes/videoplayback.mp4');*/
     background-size: cover;
     background-position: center;
     /*filter:opacity(0.5);*/

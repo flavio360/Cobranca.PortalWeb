@@ -4,11 +4,11 @@
 @model List<CobrancaCapaViewModel>
 
 <link rel="stylesheet" href="~/css/Re_Table.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/Re_Personalizado.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" />
+@* <link rel="stylesheet" href="~/css/Re_Personalizado.css" asp-append-version="true" /> *@
+@* <link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" /> *@
 
 
-<div class="corpo-content-div _re_table_list" style="border-radius:8px; flex:1; padding:2rem; max-height:calc(100vh - 48px); overflow-y:auto; overflow-x:auto;">
+<div class="_re_table_list" style="border-radius:8px; flex:1; padding:2rem; max-height:calc(100vh - 48px); overflow-y:auto; overflow-x:auto;">
     <table class="RE_table re-table-wide re-nowrap">
         <thead>
             <tr>
@@ -73,11 +73,8 @@
 
 <script>
     function abrirDetalhe(id) {
-        $.get(`/Cobranca/CobrancaDetalhe/${id}`, function (html) {
-            $("#containerModal").html(html);        // injeta a partial
-            $("#modalCobrancaDetalhe").modal("show"); // abre o modal (Bootstrap)
-        });
+      // redireciona o usuário para a página de detalhe
+      window.location.href = `/Cobranca/CobrancaDetalhe/${id}`;
     }
 </script>
 
-<div id="containerModal"></div>

@@ -1,7 +1,7 @@
 ﻿using Cobranca.PortalWeb.Models.Login;
 using Cobranca.PortalWeb.Service.Interface;
 
-namespace Cobranca.PortalWeb.Service
+namespace Cobranca.PortalWeb.Service.Login
 {
     public class LoginService : ILoginService
     {

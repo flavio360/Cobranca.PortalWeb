@@ -1,0 +1,46 @@
+﻿// Helpers
+function renToPx(rem) {
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+function getFullHeight(element) {
+    if (!element) return 0;
+    const style = window.getComputedStyle(element);
+    let size = 0;
+    size += parseInt(style.paddingTop) || 0;
+    size += parseInt(style.paddingBottom) || 0;
+    size += parseInt(style.marginTop) || 0;
+    size += parseInt(style.marginBottom) || 0;
+    size += element.offsetHeight || 0;
+    return size;
+}
+function getFullWidth(element) {
+    if (!element) return 0;
+    const style = window.getComputedStyle(element);
+    let size = 0;
+    size += parseInt(style.paddingLeft) || 0;
+    size += parseInt(style.paddingRight) || 0;
+    size += parseInt(style.marginLeft) || 0;
+    size += parseInt(style.marginRight) || 0;
+    size += element.offsetWidth || 0;
+    return size;
+}
+
+// Principal
+function resizeBody() {
+    const sidebarSide = document.getElementById("_re_layout_sidebar_side");
+    const sidebarHeader = document.getElementById("_re_layout_sidebar_top");
+    const footer = document.getElementById("_re_layout_footer");
+    const body = document.getElementById("_re_layout_body");
+    if (!body) return;
+
+    const sidebarWidth = getFullWidth(sidebarSide);
+    const footerHeight = getFullHeight(footer);
+    const headerHeight = getFullHeight(sidebarHeader);
+
+    body.style.marginLeft = (sidebarWidth + renToPx(1)) + "px";
+    body.style.marginBottom = footerHeight + "px";
+    body.style.marginTop = sidebarHeader ? (headerHeight + renToPx(1)) + "px" : "";
+}
+
+// Exponha no escopo global (garante que site.js enxergue)
+window.resizeBody = resizeBody;

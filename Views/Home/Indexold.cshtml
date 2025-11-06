@@ -1,0 +1,217 @@
+﻿@model Cobranca.PortalWeb.Models.Login.LoginRequestViewModel;
+@using System.Security.Claims;
+
+@{
+	var isAuthenticated = User.Identity.IsAuthenticated;
+
+	string userId = null;
+	string nome = null;
+	string token = null;
+	string tipoAcesso = null;
+	string empresaId = null;
+
+	if (isAuthenticated)
+	{
+		// Acessando as claims
+		userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+		nome = User.FindFirst(ClaimTypes.Name)?.Value;
+		token = User.FindFirst("Token")?.Value;
+		tipoAcesso = User.FindFirst("TipoAcesso")?.Value;
+		empresaId = User.FindFirst("EmpresaId")?.Value;
+	}
+}
+<body>
+	<main class="sidebar h-100" style="position:fixed; left:0; top:0; width:4.25rem;">
+		<div class="h-100 d-flex flex-column flex-shrink-0" id="barra_lateral">
+
+			<div class="perfil-container">
+				<label for="uploadFoto">
+					<img id="fotoPerfil" src="~/assets/icones/usuarios.png" alt="Foto de Perfil" class="foto-perfil">
+				</label>
+				<input type="file" id="uploadFoto" accept="image/*" style="display: none;">
+				<div class="saudacao">Olá, @nome!</div>
+			</div>
+
+
+			<a href="/Home" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right">
+				<img src="~/assets/img/impacto.jpeg" width="50px" />
+			</a>
+			<ul class="nav nav-pills nav-flush flex-column text-center">
+
+				<li style="display:flex; flex-direction:column; line-height:5px; width: 4.25rem;">
+					<a href="/Home" class="nav-link mt-5 btn_aside Re_Menu_Home" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="center">
+						<img src="~/assets/icones/Home.png" width="40px" />
+						<label class="text-center" style="font-size:0.5rem; color: #0e406e;"><b>Home</b></label>
+					</a>
+				</li>
+
+@* 				@if (tipoAcesso == ((int)Rencontrer.Consultorio.Web.Models.Enums.Enums.TipoUsuario.Administrador).ToString() ||
+								tipoAcesso == ((int)Rencontrer.Consultorio.Web.Models.Enums.Enums.TipoUsuario.Empresa).ToString()) *@
+				
+					<li style="display:flex; flex-direction:column; line-height:5px; margin-top: -1rem;">
+						<span class="nav-link mt-4 btn_aside Re_Menu_Home" style="cursor:pointer;" title="Gestão de Cobranças" onclick="abrirSidebar('sidebarCobrancaControl');">
+							<img src="~/assets/icones/Cobranca.png" width="40px" />
+						<label class="text-center" style="font-size:0.5rem; color:#0e406e;"><b>Gestão de Cobranças</b></label>
+						</span>
+					</li>
+
+					<li style="display:flex; flex-direction:column; line-height:5px; margin-top: -1rem;">
+						<span class="nav-link mt-4 btn_aside Re_Menu_Home" style="cursor:pointer;" title="Gestão Financeira" onclick="abrirSidebar('sidebarGestaoFinanceira');">
+							<img src="~/assets/icones/transacao.png" width="40px" />
+							<label class="text-center" style="font-size:0.5rem; color:#0e406e;"><b>Gestão Financeira</b></label>
+						</span>
+					</li>
+				
+
+@* 				@if (tipoAcesso == ((int)Rencontrer.Consultorio.Web.Models.Enums.Enums.TipoUsuario.Administrador).ToString() ||
+								tipoAcesso == ((int)Rencontrer.Consultorio.Web.Models.Enums.Enums.TipoUsuario.Cobranca).ToString()) *@
+				
+					<li style="display:flex; flex-direction:column; line-height:5px; margin-top: -1rem;">
+						<span class="nav-link mt-4 btn_aside Re_Menu_Home" style="cursor:pointer;" title="Portal do Cobranca" onclick="abrirSidebar('sidebarCobrancaPortal');">
+							<img src="~/assets/icones/agenda.png" width="40px" />
+							<label class="text-center" style="font-size:0.5rem; color:#0e406e;"><b>Portal Cobranca</b></label>
+						</span>
+					</li>
+				
+
+				@*<div class="dropdown d-flex flex-column justify-content-center align-items-center gap-4 w-100" style="position:absolute; bottom:1.5rem; margin-left: 0.33rem">*@
+				<li style="display:flex; flex-direction:column; line-height:5px; margin-top: -1rem;">
+					<span class="nav-link mt-4 btn_aside Re_Menu_Home" style="cursor:pointer;" title="Configurações" onclick="abrirSidebar('sidebarConfiguracoes');">
+						<a href="~/Configuracoes" class="Re_Menu_Home" style="border: none; background-color: #f8f9fa;">
+							<img src="~/assets/icones/definicoes.png" width="30px" />
+						</a>
+					</span>
+				</li>
+
+				<li style="display:flex; flex-direction:column; line-height:5px; margin-top: -1rem;">
+					<span class="nav-link mt-4 btn_aside Re_Menu_Home" style="cursor:pointer;" title="Sair do sistema" onclick="openModal();">
+						<img src="~/assets/icones/sair.png" width="30px" />
+					</span>
+				</li>
+				@*</div>*@
+			</ul>
+
+
+		</div>
+	</main>
+	@*	<div id="container1" class="" style="margin-left: 4.5rem;padding-left: 20px; background-color:aquamarine">
+
+	</div>*@
+	<div id="container_load" class="" style="margin-left: 4.5rem;">
+		<!-- O conteúdo das páginas será injetado aqui -->
+	</div>
+
+</body>
+@* --------------------------------------------------- *@
+@* ---------------### MODAL ### ------------------- *@
+@* --------------------------------------------------- *@
+
+<div id="logoutModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); z-index:1000;">
+	<div style="background:#fff; margin:15% auto; padding:20px; width:300px; border-radius:5px; text-align:center;">
+		<h4>Deseja encerrar a sessão?</h4>
+		<button class="re_button" onclick="logout();" style="margin:5px;">Sim</button>
+		<button class="re_button" onclick="closeModal();" style="margin:5px;">Não</button>
+	</div>
+</div>
+
+@* --------------------------------------------------- *@
+@* ---------------### SIDE BAR ### ------------------- *@
+@* --------------------------------------------------- *@
+
+
+
+<script>
+	function openModal() {
+		document.getElementById('logoutModal').style.display = 'block';
+	}
+
+	function closeModal() {
+		document.getElementById('logoutModal').style.display = 'none';
+	}
+
+	function abrirModal(modalId) {
+		// Oculta todos os modais
+		document.querySelectorAll('.Re_DS_sidebar_menuBlue').forEach(modal => {
+			modal.style.display = 'none';
+		});
+		// Exibe o modal selecionado
+		document.getElementById(modalId).style.display = 'block';
+	}
+</script>
+@*// ----------------------------------------------------------------------------------------------------------------------------*@
+@* ---------------### LOGOUT   ### ------------------- *@
+<script>
+	function openModal() {
+		document.getElementById('logoutModal').style.display = 'block';
+	}
+
+	function closeModal() {
+		document.getElementById('logoutModal').style.display = 'none';
+	}
+
+	function logout() {
+		localStorage.removeItem('userSession'); // Exemplo
+		sessionStorage.clear(); // Limpa todas as sessões
+
+		// Redirecionar para a rota Index do LoginController
+		window.location.href = '/Login/Index';
+	}
+</script>
+@*//----------------------------------------------------------------------------------------------------------------------------
+ ---------------### Eventos de abertura e fechamento do sidebar da home.   ### ------------------- *@
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$(".ajax-link").on("click", function (e) {
+			e.preventDefault(); // Impede o redirecionamento padrão
+
+			var url = $(this).attr("href"); // Obtém a URL do link clicado
+
+			$("#container").html("<p>Carregando...</p>"); // Exibe um carregamento enquanto busca os dados
+
+			$.ajax({
+				url: url,
+				type: "GET",
+				success: function (data) {
+					console.log(data);
+					$("#container").html(data); // Insere o conteúdo recebido na div container
+					fecharSidebars(); // Fecha todas as sidebars após carregar o conteúdo
+				},
+				error: function () {
+					$("#container").html("<p>Erro ao carregar a página.</p>");
+				}
+			});
+		});
+	});
+
+</script>
+
+
+<style>
+	#container {
+		height: 100vh; /* 100% da altura da janela */
+		margin-left: 4.5rem;
+		/*background-color: blueviolet;*/
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

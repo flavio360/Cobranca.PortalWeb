@@ -1,0 +1,321 @@
+﻿@using Cobranca.PortalWeb.Models.ViewModel.Cobranca
+@model List<CobrancaDetalheViewModel>
+
+<link href="~/css/Re_Default.css" rel="stylesheet">
+
+
+@{
+    if (Model == null || Model.Count == 0)
+    {
+        <div>Nenhum detalhe encontrado.</div>
+        return;
+    }
+}
+<label>Detalhe cobrança</label>
+
+<div class="container-envios">
+    @foreach (var item in Model)
+    {
+        <section class="detalhe-cobranca">
+            <div class="" style="padding: 5px 25px 15px 25px;">
+                <h2 style="margin-left: 10px; font-weight: bold;">Dados Evento:</h2>
+
+                <div class="container-white-fora borda row w-100">
+
+
+
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Tipo Evento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.TipoOrigem
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Id do Evento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.IdExterno
+                        </label>
+                    </div>
+
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Data Evento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.DataEvento
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Data Criação:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.CreatedAt
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Título:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.Titulo
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Descrição do Evento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.Descricao
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <section class="dados-cobrador">
+            <div class="" style="padding: 5px 25px 15px 25px;">
+                <h2 style="margin-left: 10px; font-weight: bold;">Credor:</h2>
+
+                <div class="row w-100 container-white-fora borda">
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Cnpj:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.Cnpj
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Nome Credor:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.NomeCredor
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="dados-valor">
+            <div class="" style="padding: 5px 25px 15px 25px;">
+                <h2 style="margin-left: 10px; font-weight: bold;">Valores Divida:</h2>
+
+                <div class="row w-100 container-white-fora borda">
+
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Valor Cobrado Inicial:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.ValorPrincipal
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Vencimento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.Vencimento
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Status Evento:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.StatusCobranca
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Despesas:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.DespesasTotal
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Indice de Juros:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.CorrecaoIndice
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Multa percentual:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.MultaPercentual
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Valor Negociação pagamento a vista:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.NegDescontoVista
+                        </label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <b><label class="font-tamanho-sm">Validade:</label></b>
+                        <br>
+                        <label class="font-cor-azul" style="font-size:10px">
+                            @item.NegValidade
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        @if (item.devedorModel != null && item.devedorModel.Count > 0)
+        {
+            <section class="lista-devedores">
+                @* Itera todos os devedores *@
+                @foreach (var dev in item.devedorModel)
+                {
+                    <div class="" style="padding: 5px 25px 15px 25px;">
+                        <h2 style="margin-left: 10px; font-weight: bold;">Devedor:</h2>
+
+                        <div class="row w-100 container-white-fora borda">
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Nome Devedor:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.NomeDevedor
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Tipo:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.Tipo
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Documento:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.CpfCnpj
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">RG_IE:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.RG_IE
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Tel1:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.Tel1
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Tel2:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.Tel2
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Email:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.Email
+                                </label>
+                            </div>
+
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Logradouro:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndLogradouro
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Nº:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndNumero
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Complemento:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndComplemento
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Bairro:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndBairro
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">Cidade:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndCidade
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">UF:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndUF
+                                </label>
+                            </div>
+                            <div class="col-3 form-group">
+                                <b><label class="font-tamanho-sm">CEP:</label></b>
+                                <br>
+                                <label class="font-cor-azul" style="font-size:10px">
+                                    @dev.EndCEP
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+            
+
+                        }
+                    </section>
+            }
+            else
+            {
+        <div class="sem-devedores">Sem devedores cadastrados.</div>
+            }
+
+    <!-- ============================= -->
+    <!-- 3) BLOCO: Respostas/Pagamentos -->
+    <!-- ============================= -->
+            @if (item.respostaModel != null && item.respostaModel.Count > 0)
+            {
+        <section class="lista-respostas">
+            @* Itera todas as respostas/pagamentos *@
+            @foreach (var resp in item.respostaModel)
+            {
+                <div class="resposta">
+                    @* Coloque aqui os campos da resposta *@
+                    @* Ex.: @resp.PaidAt, @resp.Valor, @resp.Metodo, @resp.Body, etc. *@
+
+                    <!-- EXEMPLOS (remova/edite conforme quiser)
+                    <p>Pago em: @(resp.PaidAt?.ToString("dd/MM/yyyy HH:mm") ?? "-")</p>
+                    <p>Valor: @resp.Valor</p>
+                    <p>Método: @(resp.Metodo ?? "-")</p>
+                    <pre>@(resp.Body ?? "")</pre>
+                    -->
+                </div>
+            }
+        </section>
+            }
+            else
+            {
+        <div class="sem-respostas">Sem respostas/pagamentos.</div>
+            }
+
+    <hr />
+    }
+</div>

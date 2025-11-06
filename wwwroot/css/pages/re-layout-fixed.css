@@ -1,0 +1,198 @@
+﻿:root {
+    --header-height: 30px;
+    --footer-height: 30px;
+    --sidebar-width: 120px;
+    --drawer-width: 260px;
+    --c-azul: #0e3b66;
+}
+
+/* base */
+* {
+    box-sizing: border-box;
+}
+
+/* header fixo */
+.re_header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--header-height);
+    background: var(--c-azul);
+    color: #d0d5dc;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    padding: 0 .75rem;
+}
+
+/* footer fixo */
+.re_footer {
+    position: fixed;
+    inset: auto 0 0 0;
+    height: var(--footer-height);
+    background: var(--c-azul);
+    color: #fff;
+    text-align: center;
+    line-height: var(--footer-height);
+    z-index: 2000;
+    overflow: hidden;
+}
+
+/* sidebar (coluna de ícones) */
+.re_sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    background: var(--c-azul);
+    color: #fff;
+    z-index: 1200;
+    overflow-y: auto;
+    padding: .5rem 0 .75rem .5rem;
+}
+
+    /* links/ícones do sidebar */
+    .re_sidebar .nav-link-custom,
+    .re_sidebar .btn_aside {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .25rem;
+        padding: .35rem .25rem;
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .re_sidebar .nav-link-custom:hover,
+        .re_sidebar .btn_aside:hover {
+            opacity: .9;
+        }
+
+    .re_sidebar .icon-label {
+        font-size: .62rem;
+        line-height: 1;
+        color: #0e406e;
+        font-weight: 700;
+        text-align: center;
+    }
+
+/* conteúdo principal — por padrão, só reserva a largura do sidebar */
+.re_layout-content {
+    position: relative;
+    margin-top: var(--header-height);
+    margin-left: var(--sidebar-width);
+    margin-bottom: var(--footer-height);
+    padding: 1.25rem;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    overflow: auto;
+    min-width: 0;
+    background: #f5f5f5;
+    transition: margin-left .25s ease;
+}
+
+/* drawer (container das listas) — está sempre no DOM, mas oculto */
+.re_sidebar-drawer {
+    position: fixed;
+    top: var(--header-height);
+    left: var(--sidebar-width);
+    width: var(--drawer-width);
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    background: var(--c-azul);
+    z-index: 1400; /* acima do sidebar, abaixo do header */
+    overflow: auto;
+    padding: .75rem .5rem .75rem 0;
+    border-right: 1px solid rgba(255,255,255,.12);
+    /* oculto, fora da tela */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform .25s ease, opacity .25s ease, visibility 0s linear .25s;
+}
+
+/* ao abrir uma lista (body.has-drawer), o drawer aparece e o conteúdo dá espaço */
+body.has-drawer .re_sidebar-drawer {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition-delay: 0s;
+}
+
+body.has-drawer .re_layout-content {
+    margin-left: calc(var(--sidebar-width) + var(--drawer-width));
+}
+
+/* cada lista dentro do drawer */
+.SideBar {
+    display: none;
+}
+
+/* links do drawer */
+.re_sidebar-drawer .nav-link-custom {
+    display: block;
+    padding: .4rem .75rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+    .re_sidebar-drawer .nav-link-custom:hover {
+        background: rgba(255,255,255,.08);
+        border-radius: 6px;
+    }
+
+.re_divider {
+    height: 1px;
+    background: #ffffff33;
+    margin: .25rem .75rem;
+}
+
+/* scrollbars */
+.re_sidebar::-webkit-scrollbar,
+.re_sidebar-drawer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.re_sidebar::-webkit-scrollbar-thumb,
+.re_sidebar-drawer::-webkit-scrollbar-thumb {
+    background: #ffffff2a;
+    border-radius: 8px;
+}
+
+/* transições suaves nos elementos fixos */
+.re_header, .re_sidebar, .re_footer, .re_layout-content, .re_sidebar-drawer {
+    transition-property: width, margin-left, height, left, transform, opacity, visibility;
+    transition-duration: .25s;
+    transition-timing-function: ease;
+}
+
+/* responsivo: colapsa tudo e deixa o conteúdo full */
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 0px;
+        --drawer-width: 0px;
+    }
+
+    .re_sidebar {
+        left: -200px;
+    }
+    /* tira da vista */
+    .re_sidebar-drawer {
+        left: -400px;
+    }
+    /* tira da vista */
+    .re_layout-content {
+        margin-left: 0;
+    }
+}
+
+/* utilitárias de camada */
+.re_layer-icons {
+    position: relative;
+    z-index: 2500;
+}
+
+.re_layer-overlay {
+    position: fixed;
+    z-index: 2800;
+}

@@ -1,0 +1,208 @@
+﻿<main class="re_sidebar">
+	<div class="h-100 d-flex flex-column flex-shrink-0" id="barra_lateral">
+
+		@* 		<div class="perfil-container">
+			<label for="uploadFoto">
+				<img id="fotoPerfil" src="~/assets/icones/usuarios.png" alt="Foto de Perfil" class="foto-perfil">
+			</label>
+			<input type="file" id="uploadFoto" accept="image/*" style="display:none">
+			<div class="saudacao">Olá, @nome!</div>
+		</div> *@
+
+		<a href="/Home" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right">
+			<img src="" width="50" alt="Logo">
+		</a>
+
+		<ul class="nav nav-pills nav-flush flex-column text-center">
+			<li>
+				<a href="/Home" class="nav-link mt-5 btn_aside Re_Menu_Home" aria-current="page" title="Home" data-bs-toggle="tooltip">
+					<img src="~/assets/icones/Home.png" width="40" alt="Home">
+					<span class="icon-label">Home</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#"
+				   class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
+				   data-sidebar-target="sidebarCobrancaControl"
+				   title="Gestão de Cobranças" role="button"
+				   aria-controls="sidebarCobrancaControl" aria-expanded="false">
+					<img src="~/assets/icones/Cobranca.png" width="40" alt="Gestão de Cobranças">
+					<span class="icon-label">Gestão de Cobranças</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#"
+				   class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
+				   data-sidebar-target="sidebarGestaoFinanceira"
+				   title="Gestão Financeira" role="button"
+				   aria-controls="sidebarGestaoFinanceira" aria-expanded="false">
+					<img src="~/assets/icones/transacao.png" width="40" alt="Gestão Financeira">
+					<span class="icon-label">Gestão Financeira</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#"
+				   class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
+				   data-sidebar-target="sidebarCobrancaPortal"
+				   title="Portal Cobrança" role="button"
+				   aria-controls="sidebarCobrancaPortal" aria-expanded="false">
+					<img src="~/assets/icones/agenda.png" width="40" alt="Portal Cobrança">
+					<span class="icon-label">Portal Cobrança</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="@Url.Content("~/Configuracoes")"
+				   class="nav-link mt-4 btn_aside Re_Menu_Home"
+				   title="Configurações" data-no-ajax>
+					<img src="~/assets/icones/definicoes.png" width="30" alt="Configurações">
+					<span class="icon-label">Configurações</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#"
+				   class="nav-link mt-4 btn_aside Re_Menu_Home"
+				   title="Sair do sistema" role="button"
+				   onclick="openModal(); return false;">
+					<img src="~/assets/icones/sair.png" width="30" alt="Sair">
+					<span class="icon-label">Sair</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</main>
+
+
+<aside class="re_sidebar-drawer" aria-label="Menu secundário">
+    <div id="sidebarCobrancaPortal" class="SideBar">
+        <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/CobrancaDados" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Meus dados</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/CobrancaDebitos" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Meus Débitos</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/CobrancaAgenda" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Minha agenda</a>
+                <div class="re_divider"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="sidebarGestaoFinanceira" class="SideBar">
+        <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/Dash" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Dash Atendimentos</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/Financeiro" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Dados Financeiros</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/UploadNF" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Upload Nota Fiscal</a>
+                <div class="re_divider"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="sidebarCobrancaControl" class="SideBar">
+        <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="/Cobranca/NovoCobranca" class="nav-link-custom font-tamanho-sm active hv_ ajax-link">Nova Cobrança</a>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/Cobranca/Listar" class="nav-link-custom font-tamanho-sm active hv_ ajax-link" onclick="spinnerLupeon()">Listar Cobranças</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/Agenda" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Agenda de Cobranças</a>
+                <div class="re_divider"></div>
+            </li>
+            <li class="nav-item btn_a" style="margin-left:2rem">
+                <a href="~/ConfiguracoesAgenda" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Configurar Agenda</a>
+                <div class="re_divider"></div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<script>
+        document.addEventListener('click', function(e){
+      const clicouEmIcone = e.target.closest('[data-sidebar-target]');
+      const clicouNoDrawer = e.target.closest('.re_sidebar-drawer');
+      if(!clicouEmIcone && !clicouNoDrawer){ fecharSidebars(); }
+    });
+
+</script>
+<script>
+	(function () {
+	  function abrirSidebar(id) {
+		// esconde todas
+		document.querySelectorAll('.SideBar').forEach(el => el.style.display = 'none');
+
+		const target = document.getElementById(id);
+		if (target) {
+		  target.style.display = 'block';
+		  target.scrollTop = 0;
+		  window.sidebarAberta = target;
+
+		  // aria-expanded consistente
+		  document.querySelectorAll('[data-sidebar-target]')
+			.forEach(b => b.setAttribute('aria-expanded',
+			  b.getAttribute('data-sidebar-target') === id ? 'true' : 'false'));
+
+		  // mostra drawer (classe no body)
+		  document.body.classList.add('has-drawer');
+		}
+	  }
+
+	  function fecharSidebars() {
+		document.querySelectorAll('.SideBar').forEach(s => s.style.display = 'none');
+		document.querySelectorAll('[data-sidebar-target][aria-expanded="true"]')
+		  .forEach(b => b.setAttribute('aria-expanded','false'));
+		window.sidebarAberta = null;
+
+		// esconde drawer
+		document.body.classList.remove('has-drawer');
+	  }
+
+	  // clique nos botões/ícones
+	  document.addEventListener('click', function (e) {
+		const btn = e.target.closest('[data-sidebar-target]');
+		if (!btn) return;
+
+		e.preventDefault();
+		const id = btn.getAttribute('data-sidebar-target');
+
+		// toggle: se já estava aberta, fecha
+		if (window.sidebarAberta && window.sidebarAberta.id === id) {
+		  fecharSidebars();
+		  return;
+		}
+		abrirSidebar(id);
+	  });
+
+	  // ESC fecha
+	  document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') fecharSidebars();
+	  });
+
+	  // (opcional) clicar fora fecha
+	  document.addEventListener('click', function(e){
+		const emIcone  = e.target.closest('[data-sidebar-target]');
+		const noDrawer = e.target.closest('.re_sidebar-drawer');
+		if(!emIcone && !noDrawer){ fecharSidebars(); }
+	  });
+
+	  // expõe se precisar chamar manualmente
+	  window.abrirSidebar = abrirSidebar;
+	  window.fecharSidebars = fecharSidebars;
+	})();
+</script>

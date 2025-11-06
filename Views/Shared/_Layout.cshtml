@@ -1,4 +1,31 @@
 ﻿<!DOCTYPE html>
+
+<script>
+    // ---- NÃO ALTERA CSS/HTML. APENAS FUNÇÕES GLOBAIS SIMPLES ----
+    window.abrirSidebar = function(id) {
+      // esconde todas as listas laterais
+      var listas = document.querySelectorAll('.SideBar');
+      for (var i = 0; i < listas.length; i++) {
+        listas[i].style.display = 'none';
+      }
+
+      // mostra a lista pedida
+      var alvo = document.getElementById(id);
+      if (alvo) {
+        alvo.style.display = 'block';
+        alvo.scrollTop = 0;
+      }
+    };
+
+    window.fecharSidebars = function() {
+      var listas = document.querySelectorAll('.SideBar');
+      for (var i = 0; i < listas.length; i++) {
+        listas[i].style.display = 'none';
+      }
+    };
+</script>
+
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,29 +35,41 @@
     <link rel="stylesheet" href="~/Cobranca.PortalWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Re_Spinner.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Rencontrer.Consultorio.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/pages/re-layout-fixed.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/Rencontrer.Consultorio.Web.styles.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/css/Re_Menu.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Re_Padrao.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Re_SideBar.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/css/layout/Re_SideBar.css" asp-append-version="true" /> *@
     @* <link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" /> *@
 
+
+    <link rel="stylesheet" href="~/css/Identidade_Visual.css" asp-append-version="true" />
+
+
+
 </head>
+
+
+
 <body>
-    
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    @Html.Partial("_Header")
+    <div class="layout-container">
+        @Html.Partial("_Sidebar")
+
+        <main class="re_layout-content">
             @RenderBody()
         </main>
     </div>
+    @Html.Partial("_Footer")
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Cobranca.PortalWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <script>window.APP_BASE = '@Url.Content("~/")';</script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

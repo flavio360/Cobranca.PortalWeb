@@ -3,58 +3,61 @@
 
 @model List<CobrancaCapaViewModel>
 
-<link rel="stylesheet" href="~/css/Re_Table.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/components/Re_table.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/components/Re_container.css" asp-append-version="true" />
 @* <link rel="stylesheet" href="~/css/Re_Personalizado.css" asp-append-version="true" /> *@
 @* <link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" /> *@
 
 
-<div class="_re_table_list" style="border-radius:8px; flex:1; padding:2rem; max-height:calc(100vh - 48px); overflow-y:auto; overflow-x:auto;">
-    <table class="RE_table re-table-wide re-nowrap">
-        <thead>
-            <tr>
-                <th class="RE_Table_Th"></th>
-                <th class="RE_Table_Th">STATUS</th>
-                <th class="RE_Table_Th">EMPRESA CREDORA</th>
-                <th class="RE_Table_Th">DEVEDOR</th>
-                <th class="RE_Table_Th">ID COBRANÇA</th>
-                <th class="RE_Table_Th">TÍTULO </th>
-                <th class="RE_Table_Th">DATA DO EVENTO</th>
-                <th class="RE_Table_Th">DATA CRIAÇÃO</th>
-                <th class="RE_Table_Th">DETALHE</th>
 
-            </tr>
-        </thead>
-        <tbody>
+<table class="Re_Table Re-Table-Wide Re_Table_Nowrap">
+    <thead>
+        <tr>
+            <th class="Re_Table_Th"></th>
+            <th class="Re_Table_Th">STATUS</th>
+            <th class="Re_Table_Th">EMPRESA CREDORA</th>
+            <th class="Re_Table_Th">DEVEDOR</th>
+            <th class="Re_Table_Th">ID COBRANÇA</th>
+            <th class="Re_Table_Th">TÍTULO </th>
+            <th class="Re_Table_Th">DATA DO EVENTO</th>
+            <th class="Re_Table_Th">DATA CRIAÇÃO</th>
+            <th class="Re_Table_Th">DETALHE</th>
+
+        </tr>
+    </thead>
+
+    <tbody class="Re_Table_List Re_ContentContainer">
+        
             @foreach (var item in Model.Where(x => x.EmpresaId > 1).ToList())
             {
-                <tr class="RE_Table_Tr">
-                    <td class="RE_Table_Td" align="center" valign="top">
+                <tr class="Re_Table_Tr">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <a class="btn" role="button" style="padding:0;">
                             <img class="img-status" src="@ViewHelpers.GetStatusImage((StatusEnvioCobranca)item.StatusId)" alt="Status" />
                         </a>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.StatusNome</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.NomeCredor</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.NomeDevedor</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;" class="font-cor-azul">@item.IdExterno</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.Titulo</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.DataEventoFormatada</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <p style="margin: 0;">@item.CreatedAtFormatada</p>
                     </td>
-                    <td class="RE_Table_Td" align="center" valign="top">
+                    <td class="Re_Table_Td" align="center" valign="top">
                         <a href="#" onclick="abrirDetalhe(@item.OrigemId)">
                             <img src="~/assets/icones/icons-detalhe.png" width="20" />
                         </a>
@@ -63,12 +66,14 @@
 
                 </tr>
             }
+        
+
         </tbody>
 
-        <tfoot>
-        </tfoot>
-    </table>
-</div>
+    <tfoot>
+    </tfoot>
+</table>
+
 
 
 <script>

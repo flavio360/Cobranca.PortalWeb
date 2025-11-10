@@ -1,7 +1,7 @@
 ﻿@using Cobranca.PortalWeb.Models.ViewModel.Cobranca
 @model List<CobrancaDetalheViewModel>
 
-<link href="~/css/Re_Default.css" rel="stylesheet">
+<link href="~/css/components/Re_DetalheView.css" rel="stylesheet">
 
 
 @{
@@ -13,14 +13,14 @@
 }
 <label>Detalhe cobrança</label>
 
-<div class="container-envios">
+<div class="Re_Container-Envios">
     @foreach (var item in Model)
     {
         <section class="detalhe-cobranca">
             <div class="" style="padding: 5px 25px 15px 25px;">
                 <h2 style="margin-left: 10px; font-weight: bold;">Dados Evento:</h2>
 
-                <div class="container-white-fora borda row w-100">
+                <div class="Re_Container-White-Fora  Re_Borda row w-100">
 
 
 
@@ -78,7 +78,7 @@
             <div class="" style="padding: 5px 25px 15px 25px;">
                 <h2 style="margin-left: 10px; font-weight: bold;">Credor:</h2>
 
-                <div class="row w-100 container-white-fora borda">
+                <div class="row w-100 Re_Container-White-Fora  Re_Borda">
                     <div class="col-3 form-group">
                         <b><label class="font-tamanho-sm">Cnpj:</label></b>
                         <br>
@@ -103,7 +103,7 @@
             <div class="" style="padding: 5px 25px 15px 25px;">
                 <h2 style="margin-left: 10px; font-weight: bold;">Valores Divida:</h2>
 
-                <div class="row w-100 container-white-fora borda">
+                <div class="row w-100 Re_Container-White-Fora  Re_Borda">
 
                     <div class="col-3 form-group">
                         <b><label class="font-tamanho-sm">Valor Cobrado Inicial:</label></b>
@@ -176,7 +176,7 @@
                     <div class="" style="padding: 5px 25px 15px 25px;">
                         <h2 style="margin-left: 10px; font-weight: bold;">Devedor:</h2>
 
-                        <div class="row w-100 container-white-fora borda">
+                        <div class="row w-100 Re_Container-White-Fora  Re_Borda">
                             <div class="col-3 form-group">
                                 <b><label class="font-tamanho-sm">Nome Devedor:</label></b>
                                 <br>

@@ -21,6 +21,8 @@ namespace Cobranca.PortalWeb.Controllers.Login
             _memoryCache = memoryCache;
             _Service = service;
         }
+
+        [AllowAnonymous]
         public IActionResult Index()
         {
             LoginRequestViewModel login = new LoginRequestViewModel();

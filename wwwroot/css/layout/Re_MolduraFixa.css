@@ -1,17 +1,22 @@
-﻿:root {
-    --header-height: 30px;
-    --footer-height: 30px;
-    --sidebar-width: 120px;
-    --drawer-width: 260px;
+﻿/* -------------------- Variáveis de layout -------------------- */
+:root {
+    --header-height: 60px; /* ajuste ao seu header real */
+    --footer-height: 36px; /* ajuste ao seu footer real */
+    --sidebar-width: 96px; /* largura da coluna de ícones */
+    --drawer-width: 280px; /* largura do painel da lista */
     --c-azul: #0e3b66;
 }
 
-/* base */
+/* Base segura */
+html, body {
+    height: 100%;
+}
+
 * {
     box-sizing: border-box;
 }
 
-/* header fixo */
+/* -------------------- Header fixo -------------------- */
 .re_header {
     position: fixed;
     inset: 0 0 auto 0;
@@ -24,7 +29,7 @@
     padding: 0 .75rem;
 }
 
-/* footer fixo */
+/* -------------------- Footer fixo -------------------- */
 .re_footer {
     position: fixed;
     inset: auto 0 0 0;
@@ -37,7 +42,7 @@
     overflow: hidden;
 }
 
-/* sidebar (coluna de ícones) */
+/* -------------------- Sidebar fixo -------------------- */
 .re_sidebar {
     position: fixed;
     top: var(--header-height);
@@ -46,14 +51,14 @@
     height: calc(100vh - var(--header-height) - var(--footer-height));
     background: var(--c-azul);
     color: #fff;
-    z-index: 1200;
+    z-index: 2200; /* abaixo do header, acima do conteúdo */
     overflow-y: auto;
     padding: .5rem 0 .75rem .5rem;
 }
 
-    /* links/ícones do sidebar */
-    .re_sidebar .nav-link-custom,
-    .re_sidebar .btn_aside {
+    /* Itens do sidebar (isola contra classes do Bootstrap) */
+    .re_sidebar .btn_aside,
+    .re_sidebar .nav-link-custom {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -63,20 +68,49 @@
         color: #fff;
     }
 
-        .re_sidebar .nav-link-custom:hover,
-        .re_sidebar .btn_aside:hover {
+        .re_sidebar .btn_aside:hover,
+        .re_sidebar .nav-link-custom:hover {
             opacity: .9;
         }
 
     .re_sidebar .icon-label {
         font-size: .62rem;
         line-height: 1;
-        color: #0e406e;
+        color: #000;
         font-weight: 700;
         text-align: center;
     }
 
-/* conteúdo principal — por padrão, só reserva a largura do sidebar */
+/* -------------------- Drawer (listas do menu) -------------------- */
+.re_sidebar-drawer {
+    position: fixed;
+    top: var(--header-height);
+    left: var(--sidebar-width);
+    width: var(--drawer-width);
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    background: var(--c-azul);
+    z-index: 2300; /* acima do sidebar */
+    overflow: auto;
+    padding: .75rem .5rem .75rem 0;
+    border-right: 1px solid rgba(255,255,255,.12);
+    /* oculto por padrão */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform .25s ease, opacity .25s ease, visibility 0s linear .25s;
+}
+
+/* Quando qualquer lista abre, mostramos o drawer e empurramos o conteúdo */
+body.has-chrome.has-drawer .re_sidebar-drawer {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition-delay: 0s;
+}
+
+/* -------------------- Conteúdo principal -------------------- */
 .re_layout-content {
     position: relative;
     margin-top: var(--header-height);
@@ -86,49 +120,28 @@
     height: calc(100vh - var(--header-height) - var(--footer-height));
     overflow: auto;
     min-width: 0;
-    background: #f5f5f5;
+    background: #f5f7fb; /* cor neutra para o conteúdo */
     transition: margin-left .25s ease;
 }
 
-/* drawer (container das listas) — está sempre no DOM, mas oculto */
-.re_sidebar-drawer {
-    position: fixed;
-    top: var(--header-height);
-    left: var(--sidebar-width);
-    width: var(--drawer-width);
-    height: calc(100vh - var(--header-height) - var(--footer-height));
-    background: var(--c-azul);
-    z-index: 1400; /* acima do sidebar, abaixo do header */
-    overflow: auto;
-    padding: .75rem .5rem .75rem 0;
-    border-right: 1px solid rgba(255,255,255,.12);
-    /* oculto, fora da tela */
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-100%);
-    transition: transform .25s ease, opacity .25s ease, visibility 0s linear .25s;
-}
-
-/* ao abrir uma lista (body.has-drawer), o drawer aparece e o conteúdo dá espaço */
-body.has-drawer .re_sidebar-drawer {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-    transition-delay: 0s;
-}
-
-body.has-drawer .re_layout-content {
+/* Se o drawer estiver aberto, reservamos o espaço dele também */
+body.has-chrome.has-drawer .re_layout-content {
     margin-left: calc(var(--sidebar-width) + var(--drawer-width));
 }
 
-/* cada lista dentro do drawer */
+/* -------------------- Estado sem cromo (login, etc.) -------------------- */
+body.no-chrome .re_layout-content {
+    margin: 0 !important;
+    height: auto !important;
+    min-height: 100vh;
+    background: #f5f7fb; /* opcional */
+}
+
+/* -------------------- Utilitárias extra -------------------- */
 .SideBar {
     display: none;
 }
 
-/* links do drawer */
 .re_sidebar-drawer .nav-link-custom {
     display: block;
     padding: .4rem .75rem;
@@ -147,7 +160,7 @@ body.has-drawer .re_layout-content {
     margin: .25rem .75rem;
 }
 
-/* scrollbars */
+/* Scrollbars do sidebar/drawer */
 .re_sidebar::-webkit-scrollbar,
 .re_sidebar-drawer::-webkit-scrollbar {
     width: 8px;
@@ -159,14 +172,14 @@ body.has-drawer .re_layout-content {
     border-radius: 8px;
 }
 
-/* transições suaves nos elementos fixos */
+/* Transições suaves */
 .re_header, .re_sidebar, .re_footer, .re_layout-content, .re_sidebar-drawer {
     transition-property: width, margin-left, height, left, transform, opacity, visibility;
     transition-duration: .25s;
     transition-timing-function: ease;
 }
 
-/* responsivo: colapsa tudo e deixa o conteúdo full */
+/* -------------------- Responsivo: colapsa em telas menores -------------------- */
 @media (max-width: 992px) {
     :root {
         --sidebar-width: 0px;
@@ -176,23 +189,14 @@ body.has-drawer .re_layout-content {
     .re_sidebar {
         left: -200px;
     }
-    /* tira da vista */
+    /* tira de vista */
     .re_sidebar-drawer {
         left: -400px;
     }
-    /* tira da vista */
-    .re_layout-content {
+    /* tira de vista */
+    body.has-chrome .re_layout-content {
         margin-left: 0;
     }
 }
 
-/* utilitárias de camada */
-.re_layer-icons {
-    position: relative;
-    z-index: 2500;
-}
 
-.re_layer-overlay {
-    position: fixed;
-    z-index: 2800;
-}

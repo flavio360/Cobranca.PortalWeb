@@ -1,0 +1,27 @@
+﻿.Re_Container-Envios {
+    width: 100%;
+    height: 108px;
+    background-color: #E3E4E8;
+}
+
+
+.Re_Container-White-Fora {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 5px 5px;
+    align-content: center;
+    position: relative;
+    top: -6px;
+}
+
+.Re_Borda {
+    border: 1px solid gray;
+    padding: 5px 0% 0 0%;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 5px 0 0 0;
+}

@@ -16,13 +16,15 @@
   <ItemGroup>
     <Content Remove="Views\Home\Indexold.cshtml" />
     <Content Remove="wwwroot\assets\img\292 Felipe.pdf" />
+    <Content Remove="wwwroot\css\Re_Personalizado.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Application\" />
     <Folder Include="wwwroot\assets\img\" />
     <Folder Include="wwwroot\assets\icon\" />
     <Folder Include="wwwroot\assets\animation\" />
-    <Folder Include="wwwroot\css\base\" />
     <Folder Include="wwwroot\css\themes\" />
   </ItemGroup>
 

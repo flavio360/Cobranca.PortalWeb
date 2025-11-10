@@ -1,17 +1,127 @@
-﻿._re_table_list {
-    width: 100%; /* tabela ocupa toda a largura do container */
-    table-layout: auto; /* colunas se ajustam ao conteúdo */
+﻿.Re_Table_List {
+    width: 100%; 
+    table-layout: auto;
     border-collapse: collapse;
 }
+    .Re_Table_List .Re_Table_Wide {
+        border-collapse: collapse;
+        table-layout: auto !important; /* colunas pelo conteúdo */
+        width: max-content !important; /* pode ficar mais larga que o wrapper */
+        min-width: 100% !important;
+        display: table !important;
+    }
+
+        .Re_Table_List .Re_Table_Wide thead {
+            display: table-header-group !important;
+        }
+
+        .Re_Table_List .Re_Table_Wide tbody {
+            display: table-row-group !important;
+            overflow: visible !important; /* não bloqueia a largura */
+        }
+
+        .Re_Table_List .Re_Table_Wide tr {
+            display: table-row !important;
+        }
 
 
-.RE_Table_Th {
+
+.Re_Table_Th {
     font-size: 9px;
     font-weight: 700;
     text-align: left;
     cursor: default;
     unicode-bidi: isolate;
-    /* padding: -30px 15px 5px 5px; */
     color: #a6a6a6;
     border-bottom: 0.001rem solid #efefef;
 }
+
+
+.Re_Table {
+    /* margin: 1rem; */
+}
+
+.Re_Table_FooterTh {
+    margin: 1rem;
+}
+
+.Re_Table_Th {
+    font-size: 9px;
+    font-weight: 700;
+    text-align: left;
+    cursor: default;
+    unicode-bidi: isolate;
+    color: #a6a6a6;
+    border-bottom: 0.001rem solid #efefef;
+}
+
+.Re_Table_Td {
+    font-family: Montserrat;
+    font-size: 10px;
+    padding: 0.2rem 0;
+    align-content: center;
+    text-align: left;
+    border-bottom: 0.001rem solid #e3e4e8;
+}
+
+.Re_Table_Footer {
+    padding: 20px 10px 5px 10px;
+    text-align: left;
+    font-size: 11px;
+    color: #000;
+    border-bottom: 1px solid #e3e4e8;
+}
+
+
+.Re_Table_Button {
+    text-decoration: none;
+    text-align: left !important;
+    padding: 0px 0px 0px 0px;
+    background-color: transparent;
+    border: none;
+    color: #0a2c5b;
+    cursor: pointer;
+}
+
+    .Re_Table_Button:hover {
+        text-decoration: none;
+        background-color: transparent;
+        color: #136cfb;
+    }
+
+    .Re_Table_Button:focus {
+        font-size: 10.7px;
+        color: gray;
+        transition: 0.2s;
+        outline: none;
+    }
+
+
+.Re_Table_Nowrap th,
+.Re_Table_Nowrap td {
+    white-space: nowrap;
+    padding: 0.4rem 0.6rem;
+    text-align: left;
+}
+
+
+.Re-Table-Wide {
+    border-collapse: collapse;
+    table-layout: auto; /* colunas pelo conteúdo */
+    width: max-content; /* tabela cresce conforme o conteúdo */
+    min-width: 100%; /* mas nunca menor que o wrapper */
+}
+
+
+.Re_Table_Tr {
+}
+
+    .Re_Table_Tr:hover {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        color: #000;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+
+

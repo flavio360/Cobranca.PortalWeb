@@ -155,15 +155,10 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
         }
 
 
-        [HttpPost]
-        [Route("Nova/")]
-        public async Task<IActionResult> Nova(int id)
+        [HttpGet]
+        [Route("Nova")]
+        public async Task<IActionResult> Nova()
         {
-            //var ocorrencia = await _Service.GetById(id);
-            if (true)
-            {
-                return NotFound();
-            }
             return View();
         }
 

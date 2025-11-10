@@ -115,7 +115,7 @@
     <div id="sidebarCobrancaControl" class="SideBar">
         <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
             <li class="nav-item btn_a" style="margin-left:2rem">
-                <a href="/Cobranca/NovoCobranca" class="nav-link-custom font-tamanho-sm active hv_ ajax-link">Nova Cobrança</a>
+                <a href="/Cobranca/Nova" class="nav-link-custom font-tamanho-sm active hv_ ajax-link">Nova Cobrança</a>
             </li>
             <li class="nav-item btn_a" style="margin-left:2rem">
                 <a href="~/Cobranca/Listar" class="nav-link-custom font-tamanho-sm active hv_ ajax-link" onclick="spinnerLupeon()">Listar Cobranças</a>
@@ -142,67 +142,62 @@
 
 </script>
 <script>
-	(function () {
-	  function abrirSidebar(id) {
-		// esconde todas
-		document.querySelectorAll('.SideBar').forEach(el => el.style.display = 'none');
+    (function () {
+      function abrirSidebar(id) {
+        document.querySelectorAll('.SideBar').forEach(el => el.style.display = 'none');
 
-		const target = document.getElementById(id);
-		if (target) {
-		  target.style.display = 'block';
-		  target.scrollTop = 0;
-		  window.sidebarAberta = target;
+        const target = document.getElementById(id);
+        if (target) {
+          target.style.display = 'block';
+          target.scrollTop = 0;
+          window.sidebarAberta = target;
 
-		  // aria-expanded consistente
-		  document.querySelectorAll('[data-sidebar-target]')
-			.forEach(b => b.setAttribute('aria-expanded',
-			  b.getAttribute('data-sidebar-target') === id ? 'true' : 'false'));
+          document.querySelectorAll('[data-sidebar-target]')
+            .forEach(b => b.setAttribute('aria-expanded',
+              b.getAttribute('data-sidebar-target') === id ? 'true' : 'false'));
 
-		  // mostra drawer (classe no body)
-		  document.body.classList.add('has-drawer');
-		}
-	  }
+          document.body.classList.add('has-drawer'); // mostra drawer
+        }
+      }
 
-	  function fecharSidebars() {
-		document.querySelectorAll('.SideBar').forEach(s => s.style.display = 'none');
-		document.querySelectorAll('[data-sidebar-target][aria-expanded="true"]')
-		  .forEach(b => b.setAttribute('aria-expanded','false'));
-		window.sidebarAberta = null;
+      function fecharSidebars() {
+        document.querySelectorAll('.SideBar').forEach(s => s.style.display = 'none');
+        document.querySelectorAll('[data-sidebar-target][aria-expanded="true"]')
+          .forEach(b => b.setAttribute('aria-expanded', 'false'));
+        window.sidebarAberta = null;
+        document.body.classList.remove('has-drawer'); // esconde drawer
+      }
 
-		// esconde drawer
-		document.body.classList.remove('has-drawer');
-	  }
+      // Toggle por clique no ícone/botão
+      document.addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-sidebar-target]');
+        if (!btn) return;
 
-	  // clique nos botões/ícones
-	  document.addEventListener('click', function (e) {
-		const btn = e.target.closest('[data-sidebar-target]');
-		if (!btn) return;
+        e.preventDefault();
+        const id = btn.getAttribute('data-sidebar-target');
 
-		e.preventDefault();
-		const id = btn.getAttribute('data-sidebar-target');
+        if (window.sidebarAberta && window.sidebarAberta.id === id) {
+          fecharSidebars();
+          return;
+        }
+        abrirSidebar(id);
+      });
 
-		// toggle: se já estava aberta, fecha
-		if (window.sidebarAberta && window.sidebarAberta.id === id) {
-		  fecharSidebars();
-		  return;
-		}
-		abrirSidebar(id);
-	  });
+      // Clique-fora fecha (um único handler)
+      document.addEventListener('click', function(e){
+        const emIcone  = e.target.closest('[data-sidebar-target]');
+        const noDrawer = e.target.closest('.re_sidebar-drawer');
+        const noSidebar= e.target.closest('.re_sidebar');
+        if(!emIcone && !noDrawer && !noSidebar){ fecharSidebars(); }
+      });
 
-	  // ESC fecha
-	  document.addEventListener('keydown', function (e) {
-		if (e.key === 'Escape') fecharSidebars();
-	  });
+      // ESC fecha
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') fecharSidebars();
+      });
 
-	  // (opcional) clicar fora fecha
-	  document.addEventListener('click', function(e){
-		const emIcone  = e.target.closest('[data-sidebar-target]');
-		const noDrawer = e.target.closest('.re_sidebar-drawer');
-		if(!emIcone && !noDrawer){ fecharSidebars(); }
-	  });
-
-	  // expõe se precisar chamar manualmente
-	  window.abrirSidebar = abrirSidebar;
-	  window.fecharSidebars = fecharSidebars;
-	})();
+      // expõe global caso precise
+      window.abrirSidebar = abrirSidebar;
+      window.fecharSidebars = fecharSidebars;
+    })();
 </script>

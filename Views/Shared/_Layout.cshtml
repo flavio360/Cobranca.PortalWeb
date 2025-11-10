@@ -32,18 +32,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cobranca.PortalWeb</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Cobranca.PortalWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Re_Spinner.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/layout/Re_MolduraFixa.css" asp-append-version="true" />
+
+
+    
+
+   @*  <link rel="stylesheet" href="~/Cobranca.PortalWeb.styles.css" asp-append-version="true" />
+
+
     <link rel="stylesheet" href="~/css/pages/re-layout-fixed.css" asp-append-version="true" />
-    @* <link rel="stylesheet" href="~/Rencontrer.Consultorio.Web.styles.css" asp-append-version="true" /> *@
-    <link rel="stylesheet" href="~/css/Re_Menu.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Re_Padrao.css" asp-append-version="true" />
-    @* <link rel="stylesheet" href="~/css/layout/Re_SideBar.css" asp-append-version="true" /> *@
-    @* <link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" /> *@
+
+    <link rel="stylesheet" href="~/css/base/Re_Tokens.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/layout/Re_SideBar.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/components/Re_container.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/Re_DetalheView.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/Re_Modal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/Re_Spinner.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/Re_Table.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/layout/Re_Header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout/Re_SideBar.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css//Identidade_Visual.css" asp-append-version="true" /> *@
 
 
-    <link rel="stylesheet" href="~/css/Identidade_Visual.css" asp-append-version="true" />
+
 
 
 
@@ -51,25 +68,45 @@
 
 
 
-<body>
+@{
+        // >>> SUBSTITUA o bloco abaixo pelo seguinte <<<
 
-    @Html.Partial("_Header")
-    <div class="layout-container">
-        @Html.Partial("_Sidebar")
+        // Detecta se a página atual é /Login/Index
+        var rd = ViewContext.RouteData.Values;
+        var ctrl = (rd["controller"]?.ToString() ?? "");
+        var act = (rd["action"]?.ToString() ?? "");
 
+        var isLoginPage =
+                string.Equals(ctrl, "Login", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(act, "Index", StringComparison.OrdinalIgnoreCase);
+
+        // Só esconde o chrome no Login
+        var hideChrome = isLoginPage;
+}
+
+<body class="@(hideChrome ? "no-chrome" : "has-chrome")">
+    @if (!hideChrome)
+    {
+        @Html.Partial("_Header")
+        <div class="layout-container">
+            @Html.Partial("_Sidebar")
+            <main class="re_layout-content">
+                @RenderBody()
+            </main>
+        </div>
+        @Html.Partial("_Footer")
+    }
+    else
+    {
         <main class="re_layout-content">
             @RenderBody()
         </main>
-    </div>
-    @Html.Partial("_Footer")
+    }
 
-    <script>window.APP_BASE = '@Url.Content("~/")';</script>
+    <script>window.APP_BASE='@Url.Content("~/")';</script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

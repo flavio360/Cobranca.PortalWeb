@@ -1,4 +1,6 @@
-﻿namespace Cobranca.PortalWeb.Models.Common
+﻿using Cobranca.PortalWeb.Domain.Enum;
+
+namespace Cobranca.PortalWeb.Models.Common
 {
     public static  class ViewHelpers
     {

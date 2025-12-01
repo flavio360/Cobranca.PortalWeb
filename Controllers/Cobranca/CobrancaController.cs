@@ -2,6 +2,7 @@
 using Cobranca.PortalWeb.Models.Request.Cobranca;
 using Cobranca.PortalWeb.Models.Response.Cobranca;
 using Cobranca.PortalWeb.Models.ViewModel.Cobranca;
+using Cobranca.PortalWeb.Models.ViewModel.Common;
 using Cobranca.PortalWeb.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,36 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
             _cobrancaService = cobrancaService;
         }
 
+        [HttpGet]
+        [Route("Home")]
+        public async Task<IActionResult> Home()
+        {
+            var indicadores = new List<IndicadoresView>
+                {
+                    new IndicadoresView { Titulo = "Total", Valor = 1500.75m },
+                    new IndicadoresView { Titulo = "Pendentes", Valor = 320.40m },
+                    new IndicadoresView { Titulo = "Concluídos", Valor = 1180.35m },
+                    new IndicadoresView { Titulo = "Cancelados", Valor = 50.00m }
+                };
+
+            return View(indicadores);
+        }
+
+        [HttpPost]
+        [Route("ImportarArquivo")]
+        public async Task<IActionResult> NovoArquivo(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("Arquivo não enviado");
+
+            var retorno = _cobrancaService.ValidaExcel(file);
+
+            if (retorno.Erro)
+                return BadRequest(retorno);
+
+            return View(); // exibir todos registros e informação se havia algum campo com problema, qual linha ...etc. na tela vai ter o botão enviar. que ai sim vai gravar . 
+        }
+
         [HttpGet("Listar")]
         [HttpGet("Listar/{id:int}")]
         public async Task<IActionResult> Listar(int? id, [FromQuery] CobrancaRequest? filtros)
@@ -25,7 +56,7 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
             //var ocorrencia = await _Service.GetById(id);
             var response = new List<CobrancaCapaResponse>();
             response = await _cobrancaService.CobrancaListaCapa(filtros);
-            var viewModel = _mapper.Map<List<CobrancaCapaViewModel>>(response);
+            var viewModel = _mapper.Map<List<CobrancaCapaView>>(response);
 
 
             return View(viewModel);
@@ -36,9 +67,9 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
         public async Task<IActionResult> CobrancaDetalhe(int id)
         {
 
-            var response = new List<CobrancaDetalheViewModel>
+            var response = new List<CobrancaDetalheView>
 {
-    new CobrancaDetalheViewModel
+    new CobrancaDetalheView
     {
         // 🔹 Dados da origem / ocorrência
         TipoOrigem = "SINISTRO",
@@ -161,6 +192,9 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
         {
             return View();
         }
+
+
+
 
 
         [HttpPut]

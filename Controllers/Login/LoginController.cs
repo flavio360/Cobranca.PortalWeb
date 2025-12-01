@@ -74,6 +74,7 @@ namespace Cobranca.PortalWeb.Controllers.Login
                     _memoryCache.Set(cacheKey, autenticade,
                         new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(cacheTime)));
 
+
                     // Gere a rota de forma robusta
                     var url = Url.Action("Index", "Home");   // => "/Home/Index"
 

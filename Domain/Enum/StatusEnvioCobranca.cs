@@ -1,4 +1,4 @@
-﻿namespace Cobranca.PortalWeb.Models.Common
+﻿namespace Cobranca.PortalWeb.Domain.Enum
 {
     public enum StatusEnvioCobranca
     {

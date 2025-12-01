@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Cobranca.PortalWeb.Models.Common
+namespace Cobranca.PortalWeb.Domain.Enum
 {
     public static class FormatExtensions
     {

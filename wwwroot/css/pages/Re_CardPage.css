@@ -1,0 +1,117 @@
+﻿.renderbody-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Indicadores */
+.indicadores-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between; /* distribui igualmente na linha */
+    width: 100%;
+}
+
+.indicador-card {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    border-width:2px;
+    padding: 15px;
+    flex: 1 1 0; /* cada card cresce igualmente */
+    min-width: 200px; /* garante legibilidade mínima */
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+
+
+/* opcional: ajuste responsivo */
+@media (max-width: 900px) {
+    .indicador-card {
+        flex: 1 1 calc((100% - 10px) / 2); /* 2 por linha */
+    }
+}
+
+@media (max-width: 600px) {
+    .indicador-card {
+        flex: 1 1 100%; /* 1 por linha */
+    }
+}
+
+
+    .indicador-card .descricao {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .indicador-card .valor {
+        font-size: 18px;
+        color: #007bff;
+    }
+
+/* Container principal */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-principal {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+    width: calc((100% - 20px*2)/3); /* 3 cards por linha */
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .card-principal:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+
+
+
+
+.card-header {
+    display: flex;
+    flex-direction: column; /* ícone em cima, título embaixo */
+    align-items: center;
+}
+.card-icon {
+    width: clamp(100px, 15vw, 150px);
+    height: auto;
+    margin-bottom: 8px;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+    mix-blend-mode: normal; /* <-- substitui o multiply */
+    background-color: transparent; /* opcional, garante fundo limpo */
+}
+
+
+/* efeito suave no hover do card */
+.card-principal:hover .card-icon {
+    transform: scale(1.1);
+}
+
+
+.card-title {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}

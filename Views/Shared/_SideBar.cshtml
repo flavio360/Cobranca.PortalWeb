@@ -21,16 +21,16 @@
 				</a>
 			</li>
 
-			<li>
-				<a href="#"
-				   class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
-				   data-sidebar-target="sidebarCobrancaControl"
-				   title="Gestão de Cobranças" role="button"
-				   aria-controls="sidebarCobrancaControl" aria-expanded="false">
-					<img src="~/assets/icones/Cobranca.png" width="40" alt="Gestão de Cobranças">
-					<span class="icon-label">Gestão de Cobranças</span>
-				</a>
-			</li>
+            <li>
+                <a href="@Url.Action("Home", "Cobranca")"
+                   class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
+                   title="Gestão de Cobranças" role="button">
+                    <img src="~/assets/icones/negociacao.png" width="40" alt="Gestão de Cobranças">
+                    <span class="icon-label">Gestão de Cobranças</span>
+                </a>
+            </li>
+
+
 
 			<li>
 				<a href="#"
@@ -38,7 +38,7 @@
 				   data-sidebar-target="sidebarGestaoFinanceira"
 				   title="Gestão Financeira" role="button"
 				   aria-controls="sidebarGestaoFinanceira" aria-expanded="false">
-					<img src="~/assets/icones/transacao.png" width="40" alt="Gestão Financeira">
+					<img src="~/assets/icones/dinheiro.png" width="40" alt="Gestão Financeira">
 					<span class="icon-label">Gestão Financeira</span>
 				</a>
 			</li>
@@ -58,7 +58,7 @@
 				<a href="@Url.Content("~/Configuracoes")"
 				   class="nav-link mt-4 btn_aside Re_Menu_Home"
 				   title="Configurações" data-no-ajax>
-					<img src="~/assets/icones/definicoes.png" width="30" alt="Configurações">
+					<img src="~/assets/icones/config.png" width="30" alt="Configurações">
 					<span class="icon-label">Configurações</span>
 				</a>
 			</li>
@@ -77,7 +77,7 @@
 </main>
 
 
-<aside class="re_sidebar-drawer" aria-label="Menu secundário">
+<aside class="re_sidebar-drawer" aria-label="Menu secundário" style="background-color:#1C1C1E">
     <div id="sidebarCobrancaPortal" class="SideBar">
         <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
             <li class="nav-item btn_a" style="margin-left:2rem">
@@ -112,25 +112,7 @@
         </ul>
     </div>
 
-    <div id="sidebarCobrancaControl" class="SideBar">
-        <ul class="navbar-nav justify-content-end flex-grow-2 pe-2 Re_li">
-            <li class="nav-item btn_a" style="margin-left:2rem">
-                <a href="/Cobranca/Nova" class="nav-link-custom font-tamanho-sm active hv_ ajax-link">Nova Cobrança</a>
-            </li>
-            <li class="nav-item btn_a" style="margin-left:2rem">
-                <a href="~/Cobranca/Listar" class="nav-link-custom font-tamanho-sm active hv_ ajax-link" onclick="spinnerLupeon()">Listar Cobranças</a>
-                <div class="re_divider"></div>
-            </li>
-            <li class="nav-item btn_a" style="margin-left:2rem">
-                <a href="~/Agenda" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Agenda de Cobranças</a>
-                <div class="re_divider"></div>
-            </li>
-            <li class="nav-item btn_a" style="margin-left:2rem">
-                <a href="~/ConfiguracoesAgenda" class="nav-link-custom font-tamanho-sm active hv_" onclick="spinnerLupeon()">Configurar Agenda</a>
-                <div class="re_divider"></div>
-            </li>
-        </ul>
-    </div>
+
 </aside>
 
 <script>

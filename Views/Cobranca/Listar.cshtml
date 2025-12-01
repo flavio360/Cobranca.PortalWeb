@@ -1,13 +1,15 @@
-﻿@using Cobranca.PortalWeb.Models.ViewModel.Cobranca;
+﻿@using Cobranca.PortalWeb.Domain.Enum
 @using Cobranca.PortalWeb.Models.Common;
+@using Cobranca.PortalWeb.Models.ViewModel.Cobranca;
 
-@model List<CobrancaCapaViewModel>
+@model List<CobrancaCapaView>
 
 <link rel="stylesheet" href="~/css/components/Re_table.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/components/Re_container.css" asp-append-version="true" />
 @* <link rel="stylesheet" href="~/css/Re_Personalizado.css" asp-append-version="true" /> *@
 @* <link rel="stylesheet" href="~/css/Re_Default.css" asp-append-version="true" /> *@
 
+@Html.Partial("_TituloComponentes", "Lista de Cobranças")
 
 
 <table class="Re_Table Re-Table-Wide Re_Table_Nowrap">

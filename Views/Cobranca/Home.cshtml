@@ -1,0 +1,39 @@
+﻿@using Cobranca.PortalWeb.Models.ViewModel.Common
+@model List<IndicadoresView>
+
+<link rel="stylesheet" href="~/css/pages/Re_CardPage.css" asp-append-version="true" />
+
+
+
+<div class="renderbody-container">
+    @Html.Partial("_TituloComponentes","Home")
+    <!-- Container de Indicadores -->
+    @Html.Partial("_Indicadores",Model)
+
+    <!-- Container principal de cards com links -->
+    <div class="cards-container">
+        <a href="/Cobranca/Nova" class="card-principal">
+            <div class="card-header">
+                <img src="~/assets//icones//NovaCobranca.png" alt="Pagamentos" class="card-icon" />
+
+                <span class="card-title">Nova Cobrança</span>
+            </div>
+        </a>
+
+        <a href="~/Cobranca/Listar" class="card-principal">
+            <div class="card-header">
+                <img src="~/assets//icones//lista_cobranca.png" alt="Cobrancas" class="card-icon" />
+                <span class="card-title">Cobranças em Processo</span>
+            </div>
+        </a>
+
+        <a href="/relatorios" class="card-principal">
+            <div class="card-header">
+                <img src="~/assets/icones//agendamento.png" alt="AgendaCobrancas" class="card-icon" />
+                <span class="card-title">Agenda de Cobranças</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+

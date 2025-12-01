@@ -1,1 +1,320 @@
-﻿<h2>teste</h2>
+﻿@using Cobranca.PortalWeb.Models.Request.Cobranca
+@model CobrancaRequest
+@{
+    ViewBag.Title = "Cobranças";
+}
+
+<style>
+    /* visibilidade controlada via JS */
+    .is-hidden {
+        display: none !important;
+    }
+
+    .re-form h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin: 0 0 .75rem 0;
+        color: #0e3b66;
+    }
+
+    .re-form .form-text {
+        font-size: .8rem;
+        color: #6b7280;
+    }
+</style>
+
+@Html.Partial("_TituloComponentes", "Nova Cobrança")
+
+<div class="card">
+    <div class="card-body">
+
+        <!-- AÇÕES TOPO -->
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            <!-- Importar (incompleto agora) -->
+            <button type="button"
+                    class="btn btn-light"
+                    id="btnImportarCobrancas"
+                    data-action="importar">
+                Importar cobranças
+            </button>
+            <input type="file"
+                   id="fileImportCobrancas"
+                   class="d-none"
+                   accept=".xlsx,.xls"
+                   data-role="excel-picker"
+                   data-upload-endpoint="/Cobranca/ImportarArquivo" />
+
+            <!-- criar nova -->
+            <button type="button"
+                    class="btn btn-primary"
+                    id="btnCriarNovaCobranca"
+                    data-action="nova-cobranca">
+                Criar nova cobrança
+            </button>
+        </div>
+
+        <!-- FORM NOVA COBRANÇA (invisível até clicar) -->
+        <div id="novaCobrancaContainer" class="re-form is-hidden" data-init-hidden="true">
+            <h3>Nova Cobrança</h3>
+            <form id="formNovaCobranca"
+                  asp-controller="Cobranca"
+                  asp-action="Criar"
+                  method="post"
+                  novalidate>
+
+                <!-- ================= ORIGEM / OCORRÊNCIA ================= -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="TipoOrigem" class="form-label">Tipo de origem</label>
+                        <select class="form-select" id="TipoOrigem" name="TipoOrigem">
+                            <option value="">Selecione...</option>
+                            <option value="SINISTRO">SINISTRO</option>
+                            <option value="OCORRENCIA">OCORRÊNCIA</option>
+                            <option value="OUTROS">OUTROS</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="IdExterno" class="form-label">ID Externo</label>
+                        <input type="text" class="form-control" id="IdExterno" name="IdExterno" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="DataEvento" class="form-label">Data do evento</label>
+                        <input type="date" class="form-control" id="DataEvento" name="DataEvento" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="Titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="Titulo" name="Titulo" />
+                    </div>
+                    <div class="col-md-8">
+                        <label for="Descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="Descricao" name="Descricao" rows="1"></textarea>
+                    </div>
+                </div>
+
+                <hr class="my-3" />
+
+                <!-- ================= CREDOR (EMPRESA) ================= -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="Cnpj" class="form-label">CNPJ</label>
+                        <input type="text" class="form-control" id="Cnpj" name="Cnpj" />
+                        <div class="form-text">Ex.: 11.111.111/0001-11</div>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="NomeCredor" class="form-label">Nome do credor</label>
+                        <input type="text" class="form-control" id="NomeCredor" name="NomeCredor" />
+                    </div>
+                </div>
+
+                <hr class="my-3" />
+
+                <!-- ============ DADOS FINANCEIROS DA COBRANÇA ============ -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="ValorPrincipal" class="form-label">Valor principal</label>
+                        <input type="number" step="0.01" class="form-control" id="ValorPrincipal" name="ValorPrincipal" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Vencimento" class="form-label">Vencimento</label>
+                        <input type="date" class="form-control" id="Vencimento" name="Vencimento" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="DespesasTotal" class="form-label">Despesas (total)</label>
+                        <input type="number" step="0.01" class="form-control" id="DespesasTotal" name="DespesasTotal" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="CorrecaoIndice" class="form-label">Índice de correção</label>
+                        <select class="form-select" id="CorrecaoIndice" name="CorrecaoIndice">
+                            <option value="">Selecione...</option>
+                            <option value="IPCA">IPCA</option>
+                            <option value="INPC">INPC</option>
+                            <option value="IGPM">IGP-M</option>
+                            <option value="SELIC">SELIC</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="FranquiaValor" class="form-label">Franquia (R$)</label>
+                        <input type="number" step="0.01" class="form-control" id="FranquiaValor" name="FranquiaValor" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="JurosDataBase" class="form-label">Juros - Data base</label>
+                        <input type="date" class="form-control" id="JurosDataBase" name="JurosDataBase" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="MultaPercentual" class="form-label">Multa (%)</label>
+                        <input type="number" step="0.01" class="form-control" id="MultaPercentual" name="MultaPercentual" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="NegDescontoVista" class="form-label">Desconto à vista (R$)</label>
+                        <input type="number" step="0.01" class="form-control" id="NegDescontoVista" name="NegDescontoVista" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="NegMaxParcelas" class="form-label">Máx. parcelas</label>
+                        <input type="number" step="1" class="form-control" id="NegMaxParcelas" name="NegMaxParcelas" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="NegMinValorParcela" class="form-label">Mín. valor parcela (R$)</label>
+                        <input type="number" step="0.01" class="form-control" id="NegMinValorParcela" name="NegMinValorParcela" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="NegValidade" class="form-label">Validade da negociação</label>
+                        <input type="date" class="form-control" id="NegValidade" name="NegValidade" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ValorTotalInicial" class="form-label">Valor total inicial (R$)</label>
+                        <input type="number" step="0.01" class="form-control" id="ValorTotalInicial" name="ValorTotalInicial" />
+                    </div>
+                </div>
+
+                <hr class="my-3" />
+
+                <!-- ================= DEVEDOR (LISTA) ================= -->
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h3 class="m-0">Devedor</h3>
+                    <!-- opcional para futuro -->
+                    <button type="button"
+                            class="btn btn-light"
+                            id="btnAddDevedor"
+                            data-action="add-devedor">
+                        + Adicionar devedor
+                    </button>
+                </div>
+
+                <!-- Container da lista de devedores -->
+                <div id="devedoresContainer" data-collection="devedorModel">
+                    <!-- Item 0 padrão -->
+                    <div class="card mb-3" data-devedor-index="0">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__NomeDevedor">Nome</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__NomeDevedor" name="devedorModel[0].NomeDevedor" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__Tipo">Tipo</label>
+                                    <select class="form-select" id="devedorModel_0__Tipo" name="devedorModel[0].Tipo">
+                                        <option value="">Selecione...</option>
+                                        <option value="PF">PF</option>
+                                        <option value="PJ">PJ</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__DataNascimento">Data de nascimento</label>
+                                    <input type="date" class="form-control" id="devedorModel_0__DataNascimento" name="devedorModel[0].DataNascimento" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__CpfCnpj">CPF/CNPJ</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__CpfCnpj" name="devedorModel[0].CpfCnpj" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__RG_IE">RG/IE</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__RG_IE" name="devedorModel[0].RG_IE" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__Email">E-mail</label>
+                                    <input type="email" class="form-control" id="devedorModel_0__Email" name="devedorModel[0].Email" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__Tel1">Telefone 1</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__Tel1" name="devedorModel[0].Tel1" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__Tel2">Telefone 2</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__Tel2" name="devedorModel[0].Tel2" />
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mt-1">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndLogradouro">Logradouro</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndLogradouro" name="devedorModel[0].EndLogradouro" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndNumero">Número</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndNumero" name="devedorModel[0].EndNumero" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndComplemento">Complemento</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndComplemento" name="devedorModel[0].EndComplemento" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndBairro">Bairro</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndBairro" name="devedorModel[0].EndBairro" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndCidade">Cidade</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndCidade" name="devedorModel[0].EndCidade" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndUF">UF</label>
+                                    <select class="form-select" id="devedorModel_0__EndUF" name="devedorModel[0].EndUF">
+                                        <option value="">UF</option>
+                                        <option>AC</option>
+                                        <option>AL</option>
+                                        <option>AM</option>
+                                        <option>AP</option>
+                                        <option>BA</option>
+                                        <option>CE</option>
+                                        <option>DF</option>
+                                        <option>ES</option>
+                                        <option>GO</option>
+                                        <option>MA</option>
+                                        <option>MG</option>
+                                        <option>MS</option>
+                                        <option>MT</option>
+                                        <option>PA</option>
+                                        <option>PB</option>
+                                        <option>PE</option>
+                                        <option>PI</option>
+                                        <option>PR</option>
+                                        <option>RJ</option>
+                                        <option>RN</option>
+                                        <option>RO</option>
+                                        <option>RR</option>
+                                        <option>RS</option>
+                                        <option>SC</option>
+                                        <option>SE</option>
+                                        <option>SP</option>
+                                        <option>TO</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label" for="devedorModel_0__EndCEP">CEP</label>
+                                    <input type="text" class="form-control" id="devedorModel_0__EndCEP" name="devedorModel[0].EndCEP" />
+                                </div>
+                            </div>
+
+                            <div class="mt-2">
+                                <button type="button"
+                                        class="btn btn-danger"
+                                        data-action="remover-devedor"
+                                        disabled>
+                                    Remover devedor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AÇÕES FORM -->
+                <div class="mt-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary" id="btnSalvarCobranca">Salvar</button>
+                    <button type="button" class="btn btn-light" id="btnCancelarNova" data-action="cancelar-nova">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/NovaCobranca.js"></script>
+}

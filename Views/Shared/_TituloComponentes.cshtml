@@ -1,0 +1,11 @@
+﻿@model string
+<link rel="stylesheet" href="~/css/components/Re_TituloComponente.css" asp-append-version="true" />
+
+
+<div class="pagina-header">
+    <h2 class="titulo-pagina">@Model</h2>
+
+    <button class="btn-voltar" onclick="history.back()">
+        <img src="@Url.Content("~/assets/icones/voltar.png")" alt="Voltar" />
+    </button>
+</div>

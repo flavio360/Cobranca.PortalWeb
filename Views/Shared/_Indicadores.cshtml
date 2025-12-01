@@ -1,0 +1,16 @@
+﻿@using Cobranca.PortalWeb.Models.ViewModel.Common
+@model List<IndicadoresView>
+
+
+<div class="indicadores-container">
+    @foreach (var item in Model)
+    {
+
+        <div class="indicador-card">
+            <div class="descricao">@item.Titulo</div>
+            <div class="valor">@item.Valor.ToString("N2") </div>
+        </div>
+
+    }
+</div>
+

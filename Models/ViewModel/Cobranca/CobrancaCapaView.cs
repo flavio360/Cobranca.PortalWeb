@@ -1,6 +1,6 @@
 ﻿namespace Cobranca.PortalWeb.Models.ViewModel.Cobranca
 {
-    public class CobrancaCapaViewModel
+    public class CobrancaCapaView
     {
         public int OrigemId { get; set; }
         public int EmpresaId { get; set; }

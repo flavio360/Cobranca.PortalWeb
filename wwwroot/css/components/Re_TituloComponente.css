@@ -1,0 +1,41 @@
+﻿.pagina-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* título à esquerda, botão à direita */
+    background-color: #ffffff; /* fundo branco */
+    border-radius: 6px;
+    padding: 15px 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* título à esquerda */
+.titulo-pagina {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0; /* remove margem padrão do h2 */
+}
+
+/* botão à direita */
+.btn-voltar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+    .btn-voltar img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .btn-voltar:hover {
+        background-color: #f0f0f0;
+        transform: scale(1.05);
+    }

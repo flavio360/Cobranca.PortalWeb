@@ -9,13 +9,13 @@ namespace Cobranca.PortalWeb.Mappings
     {
         public CobrancaProfile()
         {
-            CreateMap<CobrancaCapaResponse, CobrancaCapaViewModel>();
+            CreateMap<CobrancaCapaResponse, CobrancaCapaView>();
 
-            CreateMap<CobrancaDetalheResponse, CobrancaDetalheViewModel>(); CreateMap<RespostaResponse, RespostaModel>();
+            CreateMap<CobrancaDetalheResponse, CobrancaDetalheView>(); CreateMap<RespostaResponse, RespostaModel>();
             CreateMap<DevedorResponse, DevedorModel>();
 
             // Detalhe (mapeia listas com nomes diferentes)
-            CreateMap<CobrancaDetalheResponse, CobrancaDetalheViewModel>()
+            CreateMap<CobrancaDetalheResponse, CobrancaDetalheView>()
                 .ForMember(d => d.respostaModel,
                            opt => opt.MapFrom(s => s.resposta ?? new List<RespostaResponse>()))
                 .ForMember(d => d.devedorModel,

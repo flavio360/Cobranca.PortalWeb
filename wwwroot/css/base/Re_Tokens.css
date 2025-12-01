@@ -1,41 +1,242 @@
-﻿
-/*Váriaveis com todas as cores da identidade visual*/
+﻿/* =======================================================
+   ReUI.css – padrão visual global do portal
+   ======================================================= */
 
+/* ----------- Variáveis Globais ----------- */
+:root {
+    --font-family-base: "Segoe UI", "Roboto", sans-serif;
+    --font-size-base: 0.95rem;
+    --font-size-label: 0.85rem;
+    --font-size-title: 1.15rem;
+    --font-size-subtitle: 1rem;
+    --radius-base: 6px;
+    --c-primary: #0e3b66;
+    --c-primary-hover: #12509e;
+    --c-secondary: #126CFB;
+    --c-border: #d1d5db;
+    --c-bg: #f8fafc;
+    --c-text: #1f2937;
+    --c-muted: #6b7280;
+}
 
+/* ----------- Tipografia ----------- */
+body, input, select, button, textarea {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--c-text);
+}
 
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: var(--c-primary);
+    margin-bottom: .5rem;
+}
 
-/*:root {*/
-    /* Identidade visual */
+h1 {
+    font-size: 1.6rem;
+}
 
-    /*--white: #FFFFFF;
-    --azul-primary: #0A2C5B;
-    --azul-secundary: #126CFB;
-    --azul-complementary: #5CC4FF;
-    --azul-complementary_: rgba(19, 108, 251, 0.2);
-    --azul-info: #0D45F6;
-    --success: #00FFC4;
-    --azul-info: #0D45F6;
-    --warning: #FFC94D;
-    --danger: #F43831;
-    --danger-background: #e7a3a0;*/
-    /* Cores padrão para textos, descrições, backgrounds */
+h2 {
+    font-size: 1.4rem;
+}
 
-    /*--gray-1: #e1e1e6;
-    --gray-2: #F4F4F4;
-    --gray-3: rgba(130, 130, 130, 0.5);
-    --gray-4: #DCDCE0;
-    --gray-5: #e9eaed;
-    --gray-desc: #8c8c8f;
-    --gray-fundo: #e3e4e8;
-    --gray-grafic: #C4C4C4;
-    --gray-info: #515251;
-    --gray-text: #A6A6A6;
-    --gray-background: #E5E5E5;
-    --box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 15px;
-    --black_desc: #413f3e;
-    --black_status: #303030;
-    --red_status: #de3a37;
-}*/
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+label {
+    display: block;
+    font-size: var(--font-size-label);
+    font-weight: 600;
+    color: var(--c-primary);
+    margin-bottom: .25rem;
+}
+
+/* ----------- Inputs / Selects / Textareas ----------- */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: .45rem .65rem;
+    font-size: var(--font-size-base);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-base);
+    background: #fff;
+    color: var(--c-text);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--c-secondary);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(18,108,251,0.25);
+    }
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%230e3b66' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/ %3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 12px;
+    padding-right: 2rem;
+}
+
+    /* Desabilitados */
+    input[disabled],
+    select[disabled],
+    textarea[disabled] {
+        background: #e5e7eb;
+        color: var(--c-muted);
+        cursor: not-allowed;
+    }
+
+/* ----------- Botões ----------- */
+button, .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-base);
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: background .25s, transform .1s;
+}
+
+/* primário */
+.btn-primary {
+    background: var(--c-primary);
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: var(--c-primary-hover);
+    }
+
+    .btn-primary:active {
+        transform: scale(.97);
+    }
+
+/* secundário */
+.btn-secondary {
+    background: var(--c-secondary);
+    color: #fff;
+}
+
+    .btn-secondary:hover {
+        background: #1e7cff;
+    }
+
+/* neutro */
+.btn-light {
+    background: #e5e7eb;
+    color: var(--c-text);
+}
+
+    .btn-light:hover {
+        background: #d1d5db;
+    }
+
+/* perigo / alerta */
+.btn-danger {
+    background: #dc2626;
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background: #b91c1c;
+    }
+
+/* ----------- Grupos de formulário ----------- */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* ----------- Tabelas ----------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: .55rem .75rem;
+    border-bottom: 1px solid var(--c-border);
+}
+
+th {
+    background: var(--c-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) td {
+    background: #f9fafb;
+}
+
+/* ----------- Cards (painéis) ----------- */
+.card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-base);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: var(--font-size-title);
+    font-weight: 600;
+    color: var(--c-primary);
+    margin-bottom: .5rem;
+}
+
+.card-subtitle {
+    font-size: var(--font-size-subtitle);
+    color: var(--c-muted);
+    margin-bottom: .75rem;
+}
+
+/* ----------- Outros ----------- */
+.text-muted {
+    color: var(--c-muted);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mt-2 {
+    margin-top: .5rem;
+}
+
+.mb-2 {
+    margin-bottom: .5rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
 
 
 

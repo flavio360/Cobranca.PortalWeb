@@ -1,27 +1,50 @@
 ﻿.Re_Container-Envios {
-    width: 100%;
+    width: 103%;
     height: 108px;
-    background-color: #E3E4E8;
+    margin-left:-1.5rem;
+
 }
 
-
 .Re_Container-White-Fora {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 15px;
     margin: 0 auto;
     background-color: #FFF;
     padding: 5px 5px;
-    align-content: center;
     position: relative;
     top: -6px;
 }
 
 .Re_Borda {
     border: 1px solid gray;
-    padding: 5px 0% 0 0%;
+    padding: 5px 0 0 0;
     width: 100%;
     position: relative;
     z-index: 10;
-    padding: 5px 0 0 0;
+}
+
+
+
+/* Label de indicação (fixed/descrição) */
+.label-indicacao {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    /*margin-bottom: 4px;*/
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin-bottom: -12px;
+}
+
+/* Label de dado (resultado) */
+.label-dado {
+    display: block;
+    font-size: 14px;
+    color: #1E90FF; 
+    background-color: #f8f9fa; 
+    /*padding: 3px 6px;*/ 
+    border-radius: 4px; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1); 
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }

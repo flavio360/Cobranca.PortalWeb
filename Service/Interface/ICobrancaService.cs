@@ -1,4 +1,5 @@
-﻿using Cobranca.PortalWeb.Models.Request.Cobranca;
+﻿using Cobranca.PortalWeb.Models.Dto.Cobranca;
+using Cobranca.PortalWeb.Models.Request.Cobranca;
 using Cobranca.PortalWeb.Models.Response.Cobranca;
 using Cobranca.PortalWeb.Models.ViewModel.Cobranca;
 
@@ -13,7 +14,7 @@ namespace Cobranca.PortalWeb.Service.Interface
 
 
         #region  Validação (Depois levar para outra classe service)
-        CobrancaImportacaoView ValidaExcel(IFormFile file);
+        CobrancaImportacaoDto ValidaExcel(IFormFile file);
 
         #endregion
 

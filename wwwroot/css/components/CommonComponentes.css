@@ -1,0 +1,11 @@
+﻿.impacto_btn.impacto_btn_add {
+    background: linear-gradient(180deg,#00c6ff,#0072ff);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.impacto_actions {
+    display: flex;
+    justify-content: flex-end;
+}

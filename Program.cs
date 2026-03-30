@@ -6,11 +6,12 @@ using System.Globalization;
 using AutoMapper;
 using Cobranca.PortalWeb.Service.Cobranca;
 using Cobranca.PortalWeb.Service.Login;
+using Cobranca.PortalWeb.Service.Empresa;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var HttpClientCobrancaAPIServer = Environment.GetEnvironmentVariable("CobrancaAPI")
-    ?? builder.Configuration["ServiceUrls:CobrancaAPI"];
+var HttpClientCobrancaAPIServer = Environment.GetEnvironmentVariable("CobrancaAPI")?? builder.Configuration["ServiceUrls:CobrancaAPI"];
+var HttpClientEmpresaAPIServer = Environment.GetEnvironmentVariable("EmpresaApi")?? builder.Configuration["ServiceUrls:EmpresaApi"];
 
 // Serviços
 builder.Services.AddControllersWithViews();
@@ -29,6 +30,7 @@ builder.Services.AddAuthentication("CookieAuthentication")
 
 builder.Services.AddHttpClient<ILoginService, LoginService>(c =>{if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);});
 builder.Services.AddHttpClient<ICobrancaService, CobrancaService>(c =>{if (!string.IsNullOrWhiteSpace(HttpClientCobrancaAPIServer))c.BaseAddress = new Uri(HttpClientCobrancaAPIServer);});
+builder.Services.AddHttpClient<IEmpresaService, EmpresaService>(c =>{if (!string.IsNullOrWhiteSpace(HttpClientEmpresaAPIServer))c.BaseAddress = new Uri(HttpClientEmpresaAPIServer);});
 #endregion
 
 #region Mapper

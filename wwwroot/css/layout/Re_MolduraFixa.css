@@ -120,7 +120,7 @@ body.has-chrome.has-drawer .re_sidebar-drawer {
     height: calc(100vh - var(--header-height) - var(--footer-height));
     overflow: auto;
     min-width: 0;
-    background: #f5f7fb; /* cor neutra para o conteúdo */
+    background: #ffffff33; /* cor neutra para o conteúdo */
     transition: margin-left .25s ease;
 }
 

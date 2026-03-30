@@ -42,12 +42,12 @@ namespace Cobranca.PortalWeb.Controllers.Login
                 if (autenticade != null && autenticade.UsuarioId > 0)
                 {
                     var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, autenticade.UsuarioId.ToString()),
-                new Claim(ClaimTypes.Name, autenticade.Nome ?? string.Empty),
-                new Claim(ClaimTypes.Email, loginData.Email ?? string.Empty),   // use o tipo certo p/ e-mail
-                new Claim("TipoAcesso", autenticade.PerfilId.ToString())
-            };
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, autenticade.UsuarioId.ToString()),
+                        new Claim(ClaimTypes.Name, autenticade.Nome ?? string.Empty),
+                        new Claim(ClaimTypes.Email, loginData.Email ?? string.Empty),   // use o tipo certo p/ e-mail
+                        new Claim("TipoAcesso", autenticade.PerfilId.ToString())
+                    };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);

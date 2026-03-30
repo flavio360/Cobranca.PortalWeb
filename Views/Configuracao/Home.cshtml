@@ -1,0 +1,39 @@
+﻿@using Cobranca.PortalWeb.Domain.RenderPage
+@model List<ElementosConfiguracao>
+
+<partial name="~/Views/Shared/_TituloComponentes.cshtml" model='"Configurações"' />
+
+
+<link rel="stylesheet" href="~/css/components/Impacto_Card.css" asp-append-version="true" />
+
+
+<div class="config-wrapper">
+
+    @{
+        foreach (var item in Model)
+        {
+            <form asp-controller=@item.Controller asp-action=@item.Action method="get" class="config-form">
+
+                <input type="hidden" name="titulo" value="@item.Titulo" />
+
+                <div class="config-card" onclick="this.closest('form').submit();">
+
+                    <div class="config-header">
+                        @item.Titulo
+                    </div>
+
+                    <div class="config-body">
+                        <img src="@Url.Content(item.ImgPath)" />
+                    </div>
+
+                    <div class="config-footer">
+                        @item.CardDescricao
+                    </div>
+
+                </div>
+
+            </form>
+        }
+    }
+
+</div>

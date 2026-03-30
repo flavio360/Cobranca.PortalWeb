@@ -1,0 +1,114 @@
+﻿@using Cobranca.PortalWeb.Domain.Common
+@using Cobranca.PortalWeb.Models.Response.Empresa
+
+@model IEnumerable<EmpresaResponse>
+
+<link rel="stylesheet" href="~/css/impacto-theme.css" />
+<link rel="stylesheet" href="~/css/components/Impacto_Table.css" />
+
+
+<partial name="_TituloComponentes" model='"Cadastro Empresas Impacto"' />
+
+<div class="impacto_actions">
+    <button class="impacto_btn impacto_btn_add"
+            data-bs-toggle="modal"
+            data-bs-target="#modalNovaEmpresa">
+
+        <i class="bi bi-plus-lg"></i>
+        Novo
+    </button>
+</div>
+
+@await Html.PartialAsync("_ModalNovaEmpresa")
+
+<div class="impacto_table-wrapper">
+
+    <table class="impacto_table">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Fantasia</th>
+                <th>CNPJ</th>
+                <th>IE</th>
+                <th>IM</th>
+                <th>CEP</th>
+                <th>Logradouro</th>
+                <th>Número</th>
+                <th>Complemento</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Site</th>
+                <th>CNAE</th>
+                <th>Status</th>
+                <th>Data Cadastro</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ImpactoEmpresaCadastroId</td>
+                        <td>@item.EmpresaNome</td>
+                        <td>@item.EmpresaNomeFantasia</td>
+                        <td>@RenderTableUtilitys.MaskCNPJ(item.EmpresaCNPJ)</td>
+                        <td>@RenderTableUtilitys.MaskIE(item.IE)</td>
+                        <td>@item.IM</td>
+                        <td>@RenderTableUtilitys.MaskCEP(item.CEP)</td>
+                        <td>@item.Logradouro</td>
+                        <td>@item.Numero</td>
+                        <td>@item.Complemento</td>
+                        <td>@item.Bairro</td>
+                        <td>@item.Cidade</td>
+                        <td>@item.Estado</td>
+                        <td>@RenderTableUtilitys.MaskTelefone(item.Telefone)</td>
+                        <td>@item.Email</td>
+                        <td>@item.Site</td>
+                        <td>@item.CNAE</td>
+
+                        <td>
+                            @if (item.Ativo == true)
+                            {
+                                <span class="impacto_status-ativo">Ativo</span>
+                            }
+                            else
+                            {
+                                <span class="impacto_status-inativo">Inativo</span>
+                            }
+                        </td>
+
+                        <td>@(item.DataCadastro?.ToString("dd/MM/yyyy"))</td>
+
+                        <td class="impacto_actions_cell">
+
+                            <button class="impacto_btn_icon" title="Editar">
+                                <img src="@Url.Content("~/assets/icones/editar.png")" />
+                            </button>
+
+                            <button class="impacto_btn_icon danger" title="Excluir">
+                                <img src="@Url.Content("~/assets/icones/excluir.png")" />
+                            </button>
+
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="20">Nenhum registro encontrado</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

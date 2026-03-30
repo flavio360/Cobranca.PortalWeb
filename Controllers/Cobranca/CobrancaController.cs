@@ -46,7 +46,9 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
             if (retorno.Erro)
                 return BadRequest(retorno);
 
-            return View(); // exibir todos registros e informação se havia algum campo com problema, qual linha ...etc. na tela vai ter o botão enviar. que ai sim vai gravar . 
+            //enviar retorno para o service que envia para API
+
+            return View(); 
         }
 
         [HttpGet("Listar")]
@@ -192,9 +194,6 @@ namespace Cobranca.PortalWeb.Controllers.Cobranca
         {
             return View();
         }
-
-
-
 
 
         [HttpPut]

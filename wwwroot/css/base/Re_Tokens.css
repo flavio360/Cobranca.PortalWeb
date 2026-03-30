@@ -24,6 +24,8 @@ body, input, select, button, textarea {
     font-family: var(--font-family-base);
     font-size: var(--font-size-base);
     color: var(--c-text);
+    background: var(--impacto-bg-page);
+    margin: 0;
 }
 
 h1, h2, h3, h4 {

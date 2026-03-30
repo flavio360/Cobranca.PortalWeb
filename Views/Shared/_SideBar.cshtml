@@ -1,4 +1,8 @@
-﻿<main class="re_sidebar">
+﻿@{
+    var tipoAcesso = int.Parse(User.FindFirst("TipoAcesso")?.Value ?? "0");
+}
+
+<main class="re_sidebar">
 	<div class="h-100 d-flex flex-column flex-shrink-0" id="barra_lateral">
 
 		@* 		<div class="perfil-container">
@@ -54,14 +58,25 @@
 				</a>
 			</li>
 
-			<li>
+@* 			<li>
 				<a href="@Url.Content("~/Configuracoes")"
 				   class="nav-link mt-4 btn_aside Re_Menu_Home"
 				   title="Configurações" data-no-ajax>
 					<img src="~/assets/icones/config.png" width="30" alt="Configurações">
 					<span class="icon-label">Configurações</span>
 				</a>
-			</li>
+			</li> *@
+
+            <li>
+                <a href="@Url.Action("Home", "Configuracao")"
+                   class="nav-link mt-4 btn_aside Re_Menu_Home"
+                   title="Configurações" data-no-ajax>
+
+                    <img src="~/assets/icones/config.png" width="30" alt="Configurações">
+                    <span class="icon-label">Configurações</span>
+
+                </a>
+            </li>
 
 			<li>
 				<a href="#"
@@ -72,6 +87,7 @@
 					<span class="icon-label">Sair</span>
 				</a>
 			</li>
+
 		</ul>
 	</div>
 </main>

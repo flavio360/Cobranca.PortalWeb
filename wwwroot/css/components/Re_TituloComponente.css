@@ -1,41 +1,46 @@
 ﻿.pagina-header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* título à esquerda, botão à direita */
-    background-color: #ffffff; /* fundo branco */
-    border-radius: 6px;
-    padding: 15px 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    background: linear-gradient( 180deg, rgba(20,30,40,0.95), rgba(15,22,30,0.95) );
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-left: 2px solid rgba(0,198,255,0.12);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.02);
     margin-bottom: 20px;
 }
 
 /* título à esquerda */
 .titulo-pagina {
-    font-size: 1.5rem;
+    font-size: 16px;
     font-weight: 600;
-    color: #333;
-    margin: 0; /* remove margem padrão do h2 */
+    color: var(--impacto-text-primary);
+    letter-spacing: .4px;
+    margin: 0;
 }
 
 /* botão à direita */
 .btn-voltar {
-    background: none;
-    border: none;
+    background: rgba(0,198,255,0.08);
+    border: 1px solid rgba(0,198,255,0.15);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all .2s ease;
 }
 
     .btn-voltar img {
-        width: 28px;
-        height: 28px;
+        width: 18px;
+        height: 18px;
+        filter: brightness(0) invert(1);
     }
 
     .btn-voltar:hover {
-        background-color: #f0f0f0;
-        transform: scale(1.05);
+        background: rgba(0,198,255,0.15);
+        box-shadow: 0 0 8px rgba(0,198,255,0.25);
+        transform: translateY(-1px);
     }

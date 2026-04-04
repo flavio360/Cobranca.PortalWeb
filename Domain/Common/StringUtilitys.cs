@@ -1,6 +1,6 @@
 ﻿namespace Cobranca.PortalWeb.Domain.Common
 {
-    public static class RenderTableUtilitys
+    public static class StringUtilitys
     {
         public static string MaskCNPJ(string cnpj)
         {

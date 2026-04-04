@@ -22,6 +22,6 @@
         public string? Site { get; set; }
         public string? CNAE { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool? Ativo { get; set; } = true;
     }
 }

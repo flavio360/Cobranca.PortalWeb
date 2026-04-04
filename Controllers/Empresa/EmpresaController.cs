@@ -3,6 +3,7 @@ using Cobranca.PortalWeb.Models.Response.Empresa;
 using Cobranca.PortalWeb.Models.ViewModel.Common;
 using Cobranca.PortalWeb.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace Cobranca.PortalWeb.Controllers.Empresa
 {
@@ -13,6 +14,32 @@ namespace Cobranca.PortalWeb.Controllers.Empresa
         public EmpresaController(IEmpresaService empresaService)
         {
             _empresaService = empresaService;
+        }
+
+        [HttpPost]
+        [Route("NovaEmpresa")]
+        public async Task<IActionResult> NovaEmpresa([FromForm] CreateEmpresaRequest request)
+        {
+
+            var result = await _empresaService.CreateEmpresa(request);
+
+            if (result)
+            {
+                return Json(new
+                {
+                    sucesso = true,
+                    mensagem = "Empresa cadastrada com sucesso.",
+                    route = Url.Action("ListaEmpresa", "Empresa")
+                });
+            }
+
+            return Json(new
+            {
+                sucesso = false,
+                mensagem = "Erro ao cadastrar empresa.",
+                route = Url.Action("ListaEmpresa", "Empresa")
+            });
+
         }
 
         [HttpGet]
@@ -26,13 +53,7 @@ namespace Cobranca.PortalWeb.Controllers.Empresa
             return View(view);
         }
 
-        [HttpGet]
-        [Route("NovaEmpresa")]
-        public async Task<IActionResult> NovaEmpresa([FromForm] CreateEmpresaRequest request)
-        {
 
-            return View();
-        }
 
 
     }

@@ -3,13 +3,13 @@
 
 @model IEnumerable<EmpresaResponse>
 
-<link rel="stylesheet" href="~/css/impacto-theme.css" />
+@* <link rel="stylesheet" href="~/css/impacto-theme.css" /> *@
 <link rel="stylesheet" href="~/css/components/Impacto_Table.css" />
 
 
 <partial name="_TituloComponentes" model='"Cadastro Empresas Impacto"' />
 
-<div class="impacto_actions">
+<div class="impacto_actions" style="margin-bottom:1px;">
     <button class="impacto_btn impacto_btn_add"
             data-bs-toggle="modal"
             data-bs-target="#modalNovaEmpresa">
@@ -59,17 +59,17 @@
                         <td>@item.ImpactoEmpresaCadastroId</td>
                         <td>@item.EmpresaNome</td>
                         <td>@item.EmpresaNomeFantasia</td>
-                        <td>@RenderTableUtilitys.MaskCNPJ(item.EmpresaCNPJ)</td>
-                        <td>@RenderTableUtilitys.MaskIE(item.IE)</td>
+                        <td>@StringUtilitys.MaskCNPJ(item.EmpresaCNPJ)</td>
+                        <td>@StringUtilitys.MaskIE(item.IE)</td>
                         <td>@item.IM</td>
-                        <td>@RenderTableUtilitys.MaskCEP(item.CEP)</td>
+                        <td>@StringUtilitys.MaskCEP(item.CEP)</td>
                         <td>@item.Logradouro</td>
                         <td>@item.Numero</td>
                         <td>@item.Complemento</td>
                         <td>@item.Bairro</td>
                         <td>@item.Cidade</td>
                         <td>@item.Estado</td>
-                        <td>@RenderTableUtilitys.MaskTelefone(item.Telefone)</td>
+                        <td>@StringUtilitys.MaskTelefone(item.Telefone)</td>
                         <td>@item.Email</td>
                         <td>@item.Site</td>
                         <td>@item.CNAE</td>

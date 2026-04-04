@@ -17,7 +17,7 @@ namespace Cobranca.PortalWeb.Service.Empresa
         }
         public async Task<bool> CreateEmpresa(CreateEmpresaRequest request)
         {
-            var response = await _client.PostAsJsonAsync(BasePath + "createEmpresa", request);
+            var response = await _client.PostAsJsonAsync(BasePath + "/createEmpresa", request);
 
             return response.IsSuccessStatusCode;
 

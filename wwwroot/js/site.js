@@ -28,8 +28,25 @@ function showPage(pageNumber) {
 }
 
 
-document.addEventListener('click', function (e) {
-    const clicouEmIcone = e.target.closest('[data-sidebar-target]');
-    const clicouNoDrawer = e.target.closest('.re_sidebar-drawer');
-    if (!clicouEmIcone && !clicouNoDrawer) { fecharSidebars(); }
+document.addEventListener("submit", async function (e) {
+
+    const form = e.target;
+
+    if (form.id !== "formNovaEmpresa")
+        return;
+
+    e.preventDefault();
+
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+    });
+
+    const data = await response.json();
+
+    Impacto.ModalMensagem.abrir(data);
+
+});
+
+
 

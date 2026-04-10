@@ -1,0 +1,172 @@
+﻿<div class="modal fade" id="modalUpdateEmpresa" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content impacto_modal">
+
+            <form id="formUpdateEmpresa"
+                  method="post"
+                  asp-controller="Empresa"
+                  asp-action="UpdateEmpresa"
+                  class="impacto_form impacto-form-ajax">
+
+                <div class="impacto_modal_header">
+                    <h5>Editar Empresa</h5>
+
+                    <button type="button"
+                            class="impacto_modal_close"
+                            data-bs-dismiss="modal">
+                        ✕
+                    </button>
+
+                </div>
+
+                <div class="impacto_modal_body">
+
+                    <div class="impacto_form_grid">
+
+                        <div class="impacto_form_group">
+                            <label>ID</label>
+                            <input name="ImpactoEmpresaCadastroId"
+                                   id="update_Id"
+                                   class="impacto_input"
+                                   readonly />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Nome</label>
+                            <input name="EmpresaNome"
+                                   id="update_EmpresaNome"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Fantasia</label>
+                            <input name="EmpresaNomeFantasia"
+                                   id="update_EmpresaNomeFantasia"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>CNPJ</label>
+                            <input name="EmpresaCNPJ"
+                                   id="update_CNPJ"
+                                   data-mask="cnpj"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>IE</label>
+                            <input name="IE"
+                                   id="update_IE"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>IM</label>
+                            <input name="IM"
+                                   id="update_IM"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>CEP</label>
+                            <input name="CEP"
+                                   id="update_CEP"
+                                   data-mask="cep"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group impacto_col_span_2">
+                            <label>Logradouro</label>
+                            <input name="Logradouro"
+                                   id="update_Logradouro"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Número</label>
+                            <input name="Numero"
+                                   id="update_Numero"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Complemento</label>
+                            <input name="Complemento"
+                                   id="update_Complemento"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Bairro</label>
+                            <input name="Bairro"
+                                   id="update_Bairro"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Cidade</label>
+                            <input name="Cidade"
+                                   id="update_Cidade"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Estado</label>
+                            <input name="Estado"
+                                   id="update_Estado"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Telefone</label>
+                            <input name="Telefone"
+                                   id="update_Telefone"
+                                   data-mask="telefone"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Email</label>
+                            <input name="Email"
+                                   id="update_Email"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group">
+                            <label>Site</label>
+                            <input name="Site"
+                                   id="update_Site"
+                                   class="impacto_input" />
+                        </div>
+
+                        <div class="impacto_form_group impacto_col_span_2">
+                            <label>CNAE</label>
+                            <input name="CNAE"
+                                   id="update_CNAE"
+                                   class="impacto_input" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="impacto_modal_footer">
+
+                    <button type="button"
+                            class="impacto_btn"
+                            data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button type="submit"
+                            class="impacto_btn impacto_btn_add">
+                        Salvar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

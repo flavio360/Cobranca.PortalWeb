@@ -5,22 +5,22 @@
 <main class="re_sidebar">
 	<div class="h-100 d-flex flex-column flex-shrink-0" id="barra_lateral">
 
-		@* 		<div class="perfil-container">
+		<div class="perfil-container">
 			<label for="uploadFoto">
-				<img id="fotoPerfil" src="~/assets/icones/usuarios.png" alt="Foto de Perfil" class="foto-perfil">
+                <img id="fotoPerfil" src="~/assets/icones/perfil.svg" alt="Foto de Perfil" class="foto-perfil">
 			</label>
 			<input type="file" id="uploadFoto" accept="image/*" style="display:none">
-			<div class="saudacao">Olá, @nome!</div>
-		</div> *@
+			<div class="saudacao">Olá</div>
+		</div>
 
-		<a href="/Home" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right">
+@* 		<a href="/Home" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right">
 			<img src="" width="50" alt="Logo">
-		</a>
+		</a> *@
 
 		<ul class="nav nav-pills nav-flush flex-column text-center">
 			<li>
 				<a href="/Home" class="nav-link mt-5 btn_aside Re_Menu_Home" aria-current="page" title="Home" data-bs-toggle="tooltip">
-					<img src="~/assets/icones/Home.png" width="40" alt="Home">
+                    <img src="~/assets/icones/home.svg" width="40" alt="Home">
 					<span class="icon-label">Home</span>
 				</a>
 			</li>
@@ -29,7 +29,7 @@
                 <a href="@Url.Action("Home", "Cobranca")"
                    class="nav-link mt-4 btn_aside Re_Menu_Home sidebar-toggle"
                    title="Gestão de Cobranças" role="button">
-                    <img src="~/assets/icones/negociacao.png" width="40" alt="Gestão de Cobranças">
+                    <img src="~/assets/icones/negociacao.svg" width="40" alt="Gestão de Cobranças">
                     <span class="icon-label">Gestão de Cobranças</span>
                 </a>
             </li>
@@ -42,7 +42,7 @@
 				   data-sidebar-target="sidebarGestaoFinanceira"
 				   title="Gestão Financeira" role="button"
 				   aria-controls="sidebarGestaoFinanceira" aria-expanded="false">
-					<img src="~/assets/icones/dinheiro.png" width="40" alt="Gestão Financeira">
+                    <img src="~/assets/icones/dinheiro2.svg" width="40" alt="Gestão Financeira">
 					<span class="icon-label">Gestão Financeira</span>
 				</a>
 			</li>
@@ -53,7 +53,7 @@
 				   data-sidebar-target="sidebarCobrancaPortal"
 				   title="Portal Cobrança" role="button"
 				   aria-controls="sidebarCobrancaPortal" aria-expanded="false">
-					<img src="~/assets/icones/agenda.png" width="40" alt="Portal Cobrança">
+                    <img src="~/assets/icones/agenda.svg" width="40" alt="Portal Cobrança">
 					<span class="icon-label">Portal Cobrança</span>
 				</a>
 			</li>
@@ -72,7 +72,7 @@
                    class="nav-link mt-4 btn_aside Re_Menu_Home"
                    title="Configurações" data-no-ajax>
 
-                    <img src="~/assets/icones/config.png" width="30" alt="Configurações">
+                    <img src="~/assets/icones/config.svg" width="30" alt="Configurações">
                     <span class="icon-label">Configurações</span>
 
                 </a>
@@ -83,7 +83,7 @@
 				   class="nav-link mt-4 btn_aside Re_Menu_Home"
 				   title="Sair do sistema" role="button"
 				   onclick="openModal(); return false;">
-					<img src="~/assets/icones/sair.png" width="30" alt="Sair">
+                    <img src="~/assets/icones/sair.svg" width="30" alt="Sair">
 					<span class="icon-label">Sair</span>
 				</a>
 			</li>

@@ -34,7 +34,7 @@ namespace Cobranca.PortalWeb.Service.Empresa
 
         public async Task<bool> UpdateEmpresa(UpdateEmpresaRequest request)
         {
-            var response = await _client.PostAsJsonAsync(BasePath + "empresa", request);
+            var response = await _client.PutAsJsonAsync(BasePath + "/empresa", request);
             return response.IsSuccessStatusCode;
 
         }

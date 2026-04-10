@@ -17,6 +17,34 @@ namespace Cobranca.PortalWeb.Controllers.Empresa
         }
 
         [HttpPost]
+        [Route("UpdateEmpresa")]
+        public async Task<IActionResult> UpdateEmpresa([FromForm] UpdateEmpresaRequest request)
+        {
+
+            var result = await _empresaService.UpdateEmpresa(request);
+
+            if (result)
+            {
+                return Json(new
+                {
+                    sucesso = true,
+                    mensagem = "Empresa atualizada com sucesso.",
+                    route = Url.Action("ListaEmpresa", "Empresa")
+                });
+            }
+
+            return Json(new
+            {
+                sucesso = false,
+                mensagem = "Erro ao atualizar a empresa.",
+                route = Url.Action("ListaEmpresa", "Empresa")
+            });
+
+        }
+
+
+
+        [HttpPost]
         [Route("NovaEmpresa")]
         public async Task<IActionResult> NovaEmpresa([FromForm] CreateEmpresaRequest request)
         {
@@ -51,6 +79,14 @@ namespace Cobranca.PortalWeb.Controllers.Empresa
             var view = await _empresaService.ReadEmpresa(empresa);
 
             return View(view);
+        }
+
+        [HttpDelete]
+        [Route("DeleteEmpresa/{empresaId}")]
+        public async Task<IActionResult> DeleteEmpresa(int empresaId)
+        {
+
+            return View();
         }
 
 

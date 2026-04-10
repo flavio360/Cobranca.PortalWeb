@@ -1,14 +1,10 @@
-﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+﻿using Cobranca.PortalWeb.Domain.ElementosPage;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 
 namespace Cobranca.PortalWeb.Domain.RenderPage
 {
-    public class ElementosConfiguracao
+    public class ElementosConfiguracao : ElementosCardBase
     {
-        public string Titulo {  get; set; }
-        public string ImgPath {  get; set; }
-        public string Controller {  get; set; }
-        public string Action {  get; set; }
-        public string CardDescricao {  get; set; }
 
         public List<ElementosConfiguracao> Configuracao()
         {
@@ -17,7 +13,7 @@ namespace Cobranca.PortalWeb.Domain.RenderPage
             config.Add(new ElementosConfiguracao
             {
                 Titulo = "Empresa Configurações",
-                ImgPath = "/assets/icones/config.png",
+                ImgPath = "/assets/icones/config.svg",
                 Controller = "Empresa",
                 Action = "ListaEmpresa",
                 CardDescricao = "Configurações Empresa Impacto"
@@ -27,10 +23,20 @@ namespace Cobranca.PortalWeb.Domain.RenderPage
             config.Add(new ElementosConfiguracao
             {
                 Titulo = "Cliente Configurações",
-                ImgPath = "/assets/icones/config.png",
+                ImgPath = "/assets/icones/config.svg",
                 Controller = "Empresa",
                 Action = "Home",
                 CardDescricao = "Configurações Clientes Impacto"
+
+            });
+
+            config.Add(new ElementosConfiguracao
+            {
+                Titulo = "Usuários Configurações",
+                ImgPath = "/assets/icones/users.svg",
+                Controller = "Usuario",
+                Action = "Home",
+                CardDescricao = "Configurações de Usuários Impacto"
 
             });
 
